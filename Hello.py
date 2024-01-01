@@ -17,6 +17,17 @@ from streamlit.logger import get_logger
 
 LOGGER = get_logger(__name__)
 
+def Zacks_Rank(Symbol):
+
+    url = 'https://quote-feed.zacks.com/index?t=' + Symbol
+    downloaded_data = urllib.request.urlopen(url)
+    data = downloaded_data.read()
+    data_str = data.decode()
+    Z_Rank = ["Strong Buy", "Buy", "Hold", "Sell", "Strong Sell"]
+
+    for Rank in Z_Rank:
+        if data_str.find(Rank) != -1:
+            return Rank
 
 def run():
     st.set_page_config(
@@ -24,7 +35,7 @@ def run():
         page_icon="👋",
     )
 
-    st.write("# Welcome to Streamlit! 👋")
+    st.write(Zacks_Rank("AAPL"))
 
     st.sidebar.success("Select a demo above.")
 
