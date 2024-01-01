@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
-# from modules.functions import get_PSratio
-# from modules.functions import convert_df
+from modules.functions import get_PSratio
+from modules.functions import convert_df
 from modules.functions import Zacks_Rank
 # from modules.functions import stock_price
 # from gspread_dataframe import set_with_dataframe
