@@ -6,21 +6,21 @@ def display_csv(name):
     # Display a Google sheet
     from streamlit_app import client
     wks = client.open("Database").worksheet(name)
-    df = pd.DataFrame.from_dict(wks.get_all_records(), index_col=0)
+    df = pd.DataFrame.from_dict(wks.get_all_records())
     st.title(name)
-    st.table(df)
+    st.table(st.data_editor(df, hide_index=True))
 
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Confirmed_Uptrend", "Stock Screen", "Breakout Setup", "Pullback Setup", "Bullish Candle Formations"]
+    page_options = ["Confirmed_Uptrend", "Stock_Screening", "Breakout Setup", "Pullback Setup", "Bullish Candle Formations"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
     if selected_page == "Confirmed_Uptrend":
         display_csv("Confirmed_Uptrend")
 
-    elif selected_page == "Stock Screen":
-        display_csv("Stock Screen")
+    elif selected_page == "Stock_Screening":
+        display_csv("Stock_Screening")
 
     elif selected_page == "Breakout Setup":
         display_csv("Breakout Setup")
