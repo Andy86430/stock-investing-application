@@ -40,7 +40,7 @@ def watchlist() -> None:
         if st.button('Add to portfolio'):
             portfolio_df_updated = pd.concat([df_sel_row, portfolio_df])
             portfolio.clear()
-            set_with_dataframe(worksheet=watchlist, dataframe=portfolio_df_updated, include_index=False, include_column_header=True, resize=True)
+            set_with_dataframe(worksheet=portfolio, dataframe=portfolio_df_updated, include_index=False, include_column_header=True, resize=True)
             st.experimental_rerun()
 
 # Page config
