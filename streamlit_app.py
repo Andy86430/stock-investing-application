@@ -36,13 +36,24 @@ def run():
             st.secrets["gcp_service_account"],
             scopes=["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"])
         client = gspread.authorize(credentials)
-        stocklist = client.open("Database").worksheet("Stock_List")
-        stocklist_df = pd.DataFrame.from_dict(stocklist.get_all_records())
-        stocklist_df['Price'] = stocklist_df['Ticker'].apply(lambda x: stock_price(x)).round(2)
-        stocklist_df['Buying Distance (%)'] = (100 * (stocklist_df['Price'] / stocklist_df['Buy Point'] - 1)).round(1)
-        stocklist_df['Zacks Rank'] = stocklist_df['Ticker'].apply(lambda x: Zacks_Rank(x))
-        stocklist.clear()
-        set_with_dataframe(worksheet=stocklist, dataframe=stocklist_df, include_index=False, include_column_header=True, resize=True)
+
+        # Refresh watchlist
+        watchlist = client.open("Database").worksheet("Watchlist")
+        watchlist_df = pd.DataFrame.from_dict(watchlist.get_all_records())
+        watchlist_df['Price'] = watchlist_df['Ticker'].apply(lambda x: stock_price(x)).round(2)
+        watchlist_df['Buying Distance (%)'] = (100 * (watchlist_df['Price'] / watchlist_df['Buy Point'] - 1)).round(1)
+        watchlist_df['Zacks Rank'] = watchlist_df['Ticker'].apply(lambda x: Zacks_Rank(x))
+        watchlist.clear()
+        set_with_dataframe(worksheet=watchlist, dataframe=watchlist_df, include_index=False, include_column_header=True)
+
+        # Refresh portfolio
+        portfolio = client.open("Database").worksheet("Portfolio")
+        portfolio_df = pd.DataFrame.from_dict(portfolio.get_all_records())
+        portfolio_df['Price'] = portfolio_df['Ticker'].apply(lambda x: stock_price(x)).round(2)
+        portfolio_df['Buying Distance (%)'] = (100 * (portfolio_df['Price'] / portfolio_df['Buy Point'] - 1)).round(1)
+        portfolio_df['Zacks Rank'] = portfolio_df['Ticker'].apply(lambda x: Zacks_Rank(x))
+        portfolio.clear()
+        set_with_dataframe(worksheet=portfolio, dataframe=portfolio_df, include_index=False, include_column_header=True)
 
     # Useful links
     st.markdown(

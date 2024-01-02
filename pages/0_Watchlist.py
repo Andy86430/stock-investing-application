@@ -32,7 +32,7 @@ def watchlist() -> None:
         if st.button('Delete'):
             watchlist_updated = pd.concat([df_sel_row, watchlist_df]).drop_duplicates(keep=False)
             watchlist.clear()
-            set_with_dataframe(worksheet=watchlist, dataframe=watchlist_updated, include_index=False, include_column_header=True, resize=True)
+            set_with_dataframe(worksheet=watchlist, dataframe=watchlist_updated, include_index=False, include_column_header=True)
             st.experimental_rerun()
 
         # if st.button('Add to portfolio'):
