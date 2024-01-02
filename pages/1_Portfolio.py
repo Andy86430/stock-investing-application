@@ -15,6 +15,8 @@ def portfolio() -> None:
     client = gspread.authorize(credentials)
     portfolio = client.open("Database").worksheet("Portfolio")
     portfolio_df = pd.DataFrame.from_dict(portfolio.get_all_records())
+    watchlist = client.open("Database").worksheet("Watchlist")
+    watchlist_df = pd.DataFrame.from_dict(watchlist.get_all_records())
 
     # Interactive table
     df_sel_row = select_table(portfolio_df.sort_values("Buying Distance (%)"), jscode_buy_range)
@@ -35,12 +37,11 @@ def portfolio() -> None:
             set_with_dataframe(worksheet=portfolio, dataframe=portfolio_df_updated, include_index=False, include_column_header=True)
             st.experimental_rerun()
 
-        # if st.button('Add to portfolio'):
-        #     portfolio_df.loc[((portfolio_df['Ticker'] == df_sel_row['Ticker'][0]) & (portfolio_df['Category'] == 'portfolio') &
-        #                     (portfolio_df['Trading Setup'] == df_sel_row['Trading Setup'][0])), 'Category'] = 'Portfolio'
-        #     portfolio.clear()
-        #     set_with_dataframe(worksheet=portfolio, dataframe=portfolio_updated, include_index=False, include_column_header=True, resize=True)
-        #     st.experimental_rerun()
+        if st.button('Add to watchlist'):
+            watchlist_df_updated = pd.concat([df_sel_row, watchlist_df])
+            watchlist.clear()
+            set_with_dataframe(worksheet=watchlist, dataframe=watchlist_df_updated, include_index=False, include_column_header=True, resize=True)
+            st.experimental_rerun()
 
 # Page config
 st.set_page_config(page_title="Portfolio", page_icon="book")
