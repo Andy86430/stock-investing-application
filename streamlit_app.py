@@ -59,6 +59,7 @@ def run():
         portfolio_df['Zacks Rank'] = portfolio_df['Ticker'].apply(lambda x: Zacks_Rank(x))
         portfolio.clear()
         set_with_dataframe(worksheet=portfolio, dataframe=portfolio_df, include_index=False, include_column_header=True)
+        st.success('Refreshed!', icon="✅")
 
     # Useful links
     st.markdown(
