@@ -7,9 +7,8 @@ def display_csv(name):
     from streamlit_app import client
     wks = client.open("Database").worksheet(name)
     df = pd.DataFrame.from_dict(wks.get_all_records())
-    df.set_index(df.columns[0])
     st.title(name)
-    st.table(df)
+    st.table(st.dataframe(df.set_index(df.columns[0])))
 
 def documents() -> None:
 
