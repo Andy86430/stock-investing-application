@@ -3,6 +3,7 @@ import pandas as pd
 from gspread_dataframe import set_with_dataframe
 from modules.functions import select_table
 from modules.config import jscode_buy_range
+from modules.functions import stock_price
 
 def watchlist() -> None:
 
@@ -18,7 +19,7 @@ def watchlist() -> None:
     buy_point = cols[2].text_input("Buy Point:")
     if st.button(label="Submit"):
         new_row = pd.DataFrame(
-            {'Ticker': [ticker], 'Trading Setup': [setup], 'Buy Point': [buy_point], 'Price': [round(stock_info.get_live_price(ticker), 2)],
+            {'Ticker': [ticker], 'Trading Setup': [setup], 'Buy Point': [buy_point], 'Price': [round(stock_price(ticker), 2)],
              'Zacks Rank': [Zacks_Rank(ticker)]})
         new_row['Buying Distance (%)'] = (100 * (new_row['Price'] / new_row['Buy Point'].astype(float) - 1)).round(1)
         watchlist_df_updated = watchlist_df.append(new_row, ignore_index=True)
