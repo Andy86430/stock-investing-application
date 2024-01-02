@@ -6,7 +6,7 @@ def display_csv(name):
     # Display a Google sheet
     from streamlit_app import client
     wks = client.open("Database").worksheet(name)
-    df = pd.DataFrame.from_dict(wks.get_all_records())
+    df = pd.DataFrame.from_dict(wks.get_all_records(), index_col=0)
     st.title(name)
     st.table(df)
 
@@ -37,7 +37,6 @@ def documents() -> None:
 
 # Page config
 st.set_page_config(page_title="Documents", page_icon="book")
-st.markdown("# Documents")
 st.sidebar.header("Documents")
 
 documents()
