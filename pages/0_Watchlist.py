@@ -4,6 +4,7 @@ from gspread_dataframe import set_with_dataframe
 from modules.functions import select_table
 from modules.config import jscode_buy_range
 from modules.functions import stock_price
+from modules.functions import Zacks_Rank
 
 def watchlist() -> None:
 
