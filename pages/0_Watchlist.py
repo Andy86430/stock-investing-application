@@ -13,15 +13,15 @@ def watchlist() -> None:
         st.secrets["gcp_service_account"],
         scopes=["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"])
     client = gspread.authorize(credentials)
-    stocklist = client.open("Database").worksheet("Stock_List")
-    stocklist_df = pd.DataFrame.from_dict(stocklist.get_all_records())
+    watchlist = client.open("Database").worksheet("Watchlist")
+    watchlist_df = pd.DataFrame.from_dict(watchlist.get_all_records())
 
     # Interactive table
-    df_sel_row = select_table(stocklist_df.loc[stocklist_df['Category'] == 'Watchlist'].sort_values("Buying Distance (%)"), jscode_buy_range)
+    df_sel_row = select_table(watchlist_df.loc[watchlist_df['Category'] == 'Watchlist'].sort_values("Buying Distance (%)"), jscode_buy_range)
 
     # Display the number of stocks
     message = "Number of stocks:"
-    num_rows = len(stocklist_df.loc[stocklist_df['Category'] == 'Watchlist'])
+    num_rows = len(watchlist_df.loc[watchlist_df['Category'] == 'Watchlist'])
     st.write(f"{message} {num_rows}")
 
     # Buttons to add and delete stocks from the table
@@ -30,16 +30,16 @@ def watchlist() -> None:
         df_sel_row = df_sel_row.drop(columns='_selectedRowNodeInfo', axis=1)
 
         if st.button('Delete'):
-            stocklist_updated = pd.concat([df_sel_row, stocklist_df]).drop_duplicates(keep=False)
-            stocklist.clear()
-            set_with_dataframe(worksheet=stocklist, dataframe=stocklist_updated, include_index=False, include_column_header=True, resize=True)
+            watchlist_updated = pd.concat([df_sel_row, watchlist_df]).drop_duplicates(keep=False)
+            watchlist.clear()
+            set_with_dataframe(worksheet=watchlist, dataframe=watchlist_updated, include_index=False, include_column_header=True, resize=True)
             st.experimental_rerun()
 
         if st.button('Add to portfolio'):
-            stocklist_df.loc[((stocklist_df['Ticker'] == df_sel_row['Ticker'][0]) & (stocklist_df['Category'] == 'Watchlist') &
-                            (stocklist_df['Trading Setup'] == df_sel_row['Trading Setup'][0])), 'Category'] = 'Portfolio'
-            stocklist.clear()
-            set_with_dataframe(worksheet=stocklist, dataframe=stocklist_updated, include_index=False, include_column_header=True, resize=True)
+            watchlist_df.loc[((watchlist_df['Ticker'] == df_sel_row['Ticker'][0]) & (watchlist_df['Category'] == 'Watchlist') &
+                            (watchlist_df['Trading Setup'] == df_sel_row['Trading Setup'][0])), 'Category'] = 'Portfolio'
+            watchlist.clear()
+            set_with_dataframe(worksheet=watchlist, dataframe=watchlist_updated, include_index=False, include_column_header=True, resize=True)
             st.experimental_rerun()
 
 # Page config
