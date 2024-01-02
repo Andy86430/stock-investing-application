@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
-import gspread
 from gspread_dataframe import set_with_dataframe
-from google.oauth2 import service_account
 from modules.functions import select_table
 from modules.config import jscode_buy_range
 
