@@ -8,7 +8,7 @@ def display_csv(name):
     wks = client.open("Database").worksheet(name)
     df = pd.DataFrame.from_dict(wks.get_all_records())
     st.title(name)
-    st.table(st.data_editor(df, hide_index=True))
+    st.data_editor(df, hide_index=True)
 
 def documents() -> None:
 
