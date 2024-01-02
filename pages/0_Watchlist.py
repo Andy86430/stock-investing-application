@@ -9,13 +9,8 @@ from modules.config import jscode_buy_range
 def watchlist() -> None:
 
     # Connect to Google sheet
-    credentials = service_account.Credentials.from_service_account_info(
-        st.secrets["gcp_service_account"],
-        scopes=["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"])
-    client = gspread.authorize(credentials)
-    watchlist = client.open("Database").worksheet("Watchlist")
+    from streamlit_app import watchlist, portfolio
     watchlist_df = pd.DataFrame.from_dict(watchlist.get_all_records())
-    portfolio = client.open("Database").worksheet("Portfolio")
     portfolio_df = pd.DataFrame.from_dict(portfolio.get_all_records())
 
     # Interactive table
