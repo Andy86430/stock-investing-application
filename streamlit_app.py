@@ -8,6 +8,14 @@ from gspread_dataframe import set_with_dataframe
 import gspread
 from google.oauth2 import service_account
 
+# Connect to Google sheet
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"],
+    scopes=["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"])
+client = gspread.authorize(credentials)
+watchlist = client.open("Database").worksheet("Watchlist")
+portfolio = client.open("Database").worksheet("Portfolio")
+
 def run():
     
     # Page config
@@ -32,13 +40,8 @@ def run():
 
     # Refresh stock prices
     if st.button('Refresh'):
-        credentials = service_account.Credentials.from_service_account_info(
-            st.secrets["gcp_service_account"],
-            scopes=["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"])
-        client = gspread.authorize(credentials)
 
         # Refresh watchlist
-        watchlist = client.open("Database").worksheet("Watchlist")
         watchlist_df = pd.DataFrame.from_dict(watchlist.get_all_records())
         watchlist_df['Price'] = watchlist_df['Ticker'].apply(lambda x: stock_price(x)).round(2)
         watchlist_df['Buying Distance (%)'] = (100 * (watchlist_df['Price'] / watchlist_df['Buy Point'] - 1)).round(1)
@@ -47,7 +50,6 @@ def run():
         set_with_dataframe(worksheet=watchlist, dataframe=watchlist_df, include_index=False, include_column_header=True)
 
         # Refresh portfolio
-        portfolio = client.open("Database").worksheet("Portfolio")
         portfolio_df = pd.DataFrame.from_dict(portfolio.get_all_records())
         portfolio_df['Price'] = portfolio_df['Ticker'].apply(lambda x: stock_price(x)).round(2)
         portfolio_df['Buying Distance (%)'] = (100 * (portfolio_df['Price'] / portfolio_df['Buy Point'] - 1)).round(1)
