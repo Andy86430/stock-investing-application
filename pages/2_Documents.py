@@ -14,10 +14,13 @@ def display_csv(name):
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Confirmed_Uptrend", "Stock_Screening", "Breakout_Setup", "Pullback_Setup", "Mistakes_to_Avoid"]
+    page_options = ["Confirmed_Uptrend", "Stock_Screening", "Breakout_Setup", "Pullback_Setup", "Mistakes_to_Avoid", "Market_Timing"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
-    if selected_page == "Confirmed_Uptrend":
+    if selected_page == "Market_Timing":
+        display_csv("Market_Timing")
+
+    elif selected_page == "Confirmed_Uptrend":
         display_csv("Confirmed_Uptrend")
 
     elif selected_page == "Stock_Screening":
