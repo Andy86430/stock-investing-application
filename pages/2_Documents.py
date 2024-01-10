@@ -14,7 +14,7 @@ def display_csv(name):
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Confirmed_Uptrend", "Stock_Screening", "Breakout_Setup", "Pullback_Setup"]
+    page_options = ["Confirmed_Uptrend", "Stock_Screening", "Breakout_Setup", "Pullback_Setup", "Mistakes_to_Avoid"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
     if selected_page == "Confirmed_Uptrend":
@@ -28,6 +28,9 @@ def documents() -> None:
 
     elif selected_page == "Pullback_Setup":
         display_csv("Pullback_Setup")
+
+    elif selected_page == "Mistakes_to_Avoid":
+        display_csv("Mistakes_to_Avoid")
 
 # Page config
 st.set_page_config(page_title="Documents", page_icon="book")
