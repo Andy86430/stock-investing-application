@@ -14,26 +14,26 @@ def display_csv(name):
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Market_Timing", "Confirmed_Uptrend", "Stock_Screening", "Breakout_Setup", "Pullback_Setup", "Mistakes_to_Avoid"]
+    page_options = ["Market Timing", "Confirmed Uptrend", "Stock Screener", "Breakout Setup", "Pullback Setup", "Mistakes to Avoid"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
-    if selected_page == "Market_Timing":
-        display_csv("Market_Timing")
+    if selected_page == page_options[0]:
+        display_csv(page_options[0])
 
-    elif selected_page == "Confirmed_Uptrend":
-        display_csv("Confirmed_Uptrend")
+    elif selected_page == page_options[1]:
+        display_csv(page_options[1])
 
-    elif selected_page == "Stock_Screening":
-        display_csv("Stock_Screening")
+    elif selected_page == page_options[2]:
+        display_csv(page_options[2])
 
-    elif selected_page == "Breakout_Setup":
-        display_csv("Breakout_Setup")
+    elif selected_page == page_options[3]:
+        display_csv(page_options[3])
 
-    elif selected_page == "Pullback_Setup":
-        display_csv("Pullback_Setup")
+    elif selected_page == page_options[4]:
+        display_csv(page_options[4])
 
-    elif selected_page == "Mistakes_to_Avoid":
-        display_csv("Mistakes_to_Avoid")
+    elif selected_page == page_options[5]:
+        display_csv(page_options[5])
 
 # Page config
 st.set_page_config(page_title="Documents", page_icon="book")
