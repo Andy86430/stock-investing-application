@@ -33,9 +33,7 @@ def documents() -> None:
         display_csv("Stock Screener")
 
     elif selected_page == "Trade Setup":
-        st.title("Breakout Setup")
         display_csv("Breakout Setup")
-        st.title("Pullback Setup")
         display_csv("Pullback Setup")
 
     elif selected_page == "Climax Top":
