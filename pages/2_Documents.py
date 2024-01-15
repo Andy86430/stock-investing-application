@@ -35,6 +35,7 @@ def documents() -> None:
     elif selected_page == "Trade Setup":
         display_csv("Breakout Setup")
         display_csv("Pullback Setup")
+        display_csv("Mean Reversion Setup")
 
     elif selected_page == "Climax Top":
         display_csv("Climax Top")
