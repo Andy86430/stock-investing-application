@@ -14,32 +14,32 @@ def display_csv(name):
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", "Stock Screener", "Breakout Setup", "Pullback Setup", "Climax Top"]
+    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", "Stock Screener", "Trade Setup", "Climax Top"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
-    if selected_page == page_options[0]:
-        display_csv(page_options[0])
+    if selected_page == "Mistakes to Avoid":
+        display_csv("Mistakes to Avoid")
 
-    elif selected_page == page_options[1]:
-        display_csv(page_options[1])
+    elif selected_page == "Investment Commandments":
+        display_csv("Investment Commandments")
 
-    elif selected_page == page_options[2]:
-        display_csv(page_options[2])
+    elif selected_page == "Market Timing":
+        display_csv("Market Timing")
 
-    elif selected_page == page_options[3]:
-        display_csv(page_options[3])
+    elif selected_page == "Confirmed Uptrend":
+        display_csv("Confirmed Uptrend")
 
-    elif selected_page == page_options[4]:
-        display_csv(page_options[4])
+    elif selected_page == "Stock Screener":
+        display_csv("Stock Screener")
 
-    elif selected_page == page_options[5]:
-        display_csv(page_options[5])
+    elif selected_page == "Trade Setup":
+        st.title("Breakout Setup")
+        display_csv("Breakout Setup")
+        st.title("Pullback Setup")
+        display_csv("Pullback Setup")
 
-    elif selected_page == page_options[6]:
-        display_csv(page_options[6])
-
-    elif selected_page == page_options[7]:
-        display_csv(page_options[7])
+    elif selected_page == "Climax Top":
+        display_csv("Climax Top")
 
 # Page config
 st.set_page_config(page_title="Documents", page_icon="book")
