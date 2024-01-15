@@ -14,7 +14,7 @@ def display_csv(name):
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", "Stock Screener", "Trade Setup", "Climax Top"]
+    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", "Stock Screener", "Trade Setup", "Climax Top", "Profit Taking"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
     if selected_page == "Mistakes to Avoid":
@@ -41,6 +41,9 @@ def documents() -> None:
 
     elif selected_page == "Climax Top":
         display_csv("Climax Top")
+
+    elif selected_page == "Profit Taking":
+        display_csv("Profit Taking")
 
 # Page config
 st.set_page_config(page_title="Documents", page_icon="book")
