@@ -47,13 +47,13 @@ def documents() -> None:
         display_csv("Profit Taking")
 
     elif selected_page == "Indicator Categories":
+        display_csv("Indicator Categories")
         bullet_points = """
         - Volume is an independent variable hence volume indicators are preferred.
         - Avoid collinearity.
         - Focus on AD, II, MFI, VWMACD.
         """
         st.markdown(bullet_points)
-        display_csv("Indicator Categories")
 
 # Page config
 st.set_page_config(page_title="Documents", page_icon="book")
