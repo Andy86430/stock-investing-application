@@ -31,13 +31,12 @@ def run():
     if upload is not None:
         if st.button('Produce Bullish List'):    
             bullishlist = pd.read_excel(upload).dropna()
-            # bullishlist = bullishlist.rename(columns=bullishlist.iloc[0]).drop(bullishlist.index[0])
             bullishlist['Zack Rank'] = bullishlist['Symbol'].apply(lambda x: Zacks_Rank(x))
             bullishlist = bullishlist.loc[(bullishlist['Zack Rank'].isin(['Buy', 'Strong Buy']))]
             bullishlist['PS'] = bullishlist['Symbol'].apply(lambda x: get_PSratio(x))
             bullishlist = bullishlist.sort_values(by=['PS'])
             csv = convert_df(bullishlist['Symbol'])
-            st.download_button("Download",csv,upload.name,"text/csv",key='download-csv')
+            st.download_button("Download",csv,upload.name.replace(".xlsx",""),"text/csv",key='download-csv')
 
     # Refresh stock prices
     if st.button('Refresh'):
