@@ -36,7 +36,7 @@ def run():
             bullishlist['PS'] = bullishlist['Symbol'].apply(lambda x: get_PSratio(x))
             bullishlist = bullishlist.sort_values(by=['PS'])
             csv = convert_df(bullishlist['Symbol'])
-            st.download_button("Download",csv,upload.name.replace(".xlsx",""),"text/csv",key='download-csv')
+            st.download_button("Download",csv,upload.name.replace(".xlsx","")+".csv","text/csv",key='download-csv')
 
     # Refresh stock prices
     if st.button('Refresh'):
