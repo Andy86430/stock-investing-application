@@ -15,7 +15,7 @@ def documents() -> None:
 
     # Sidebar navigation
     page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", 
-                    "Stock Screener", "Trade Setup", "Market Top", "Climax Top", "Profit Taking", "Indicator Categories", 
+                    "Breakout Strategy", "Trade Setup", "Market Top", "Climax Top", "Profit Taking", "Indicator Categories", 
                     "Find The Best IPO Stocks"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
@@ -31,8 +31,11 @@ def documents() -> None:
     elif selected_page == "Confirmed Uptrend":
         display_csv("Confirmed Uptrend")
 
-    elif selected_page == "Stock Screener":
-        display_csv("Stock Screener")
+    elif selected_page == "Breakout Strategy":
+        display_csv("Breakout Setup")
+        display_csv("Breakout Screener")
+        display_csv("Post Breakout")
+        display_csv("Defensive Sell Rules")
 
     elif selected_page == "Trade Setup":
         display_csv("Breakout Setup")
