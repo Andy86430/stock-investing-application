@@ -27,7 +27,7 @@ def run():
 
     # Produce a bullish watchlist
     st.markdown("""### Actions:""")
-    upload = st.file_uploader('Upload "IBD Data Tables.xlsx"', type="xlsx")
+    upload = st.file_uploader('Upload Stock List (xlsx)', type="xlsx")
     if upload is not None:
         if st.button('Produce Bullish List'):    
             bullishlist = pd.read_excel(upload).dropna()
@@ -37,7 +37,7 @@ def run():
             bullishlist['PS'] = bullishlist['Symbol'].apply(lambda x: get_PSratio(x))
             bullishlist = bullishlist.sort_values(by=['PS'])
             csv = convert_df(bullishlist['Symbol'])
-            st.download_button("Download",csv,"Bullish List.csv","text/csv",key='download-csv')
+            st.download_button("Download",csv,upload.name,"text/csv",key='download-csv')
 
     # Refresh stock prices
     if st.button('Refresh'):
