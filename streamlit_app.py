@@ -31,7 +31,7 @@ def run():
     if upload is not None:
         if st.button('Produce Bullish List'):    
             bullishlist = pd.read_excel(upload).dropna()
-            bullishlist = bullishlist.rename(columns=bullishlist.iloc[0]).drop(bullishlist.index[0])
+            # bullishlist = bullishlist.rename(columns=bullishlist.iloc[0]).drop(bullishlist.index[0])
             bullishlist['Zack Rank'] = bullishlist['Symbol'].apply(lambda x: Zacks_Rank(x))
             bullishlist = bullishlist.loc[(bullishlist['Zack Rank'].isin(['Buy', 'Strong Buy']))]
             bullishlist['PS'] = bullishlist['Symbol'].apply(lambda x: get_PSratio(x))
