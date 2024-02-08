@@ -14,9 +14,10 @@ def display_csv(name):
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", 
-                    "Breakout Strategy", "Trade Setup", "Market Top", "Climax Top", "Profit Taking", "Indicator Categories", 
-                    "Find The Best IPO Stocks"]
+    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", "Market Top", 
+                    "Climax Top", "Profit Taking", "Indicator Categories", 
+                    "Find The Best IPO Stocks"
+                    "Breakout Strategy", "Pullback Strategy"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
     if selected_page == "Mistakes to Avoid":
@@ -37,12 +38,9 @@ def documents() -> None:
         display_csv("Post Breakout")
         display_csv("Defensive Sell Rules")
 
-    elif selected_page == "Trade Setup":
-        display_csv("Breakout Setup")
+    elif selected_page == "Pullback Strategy":
         display_csv("Pullback Setup")
-        display_csv("Mean Reversion Setup")
-        display_csv("Bullish Divergence Setup")
-        display_csv("Coiled Spring Setup")
+        display_csv("Pullback Screener")
 
     elif selected_page == "Climax Top":
         display_csv("Climax Top")
