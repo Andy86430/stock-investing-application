@@ -16,7 +16,7 @@ def documents() -> None:
     # Sidebar navigation
     page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", "Market Top", 
                     "Climax Top", "Profit Taking", "Indicator Categories", 
-                    "Find The Best IPO Stocks"
+                    "Find The Best IPO Stocks",
                     "Breakout Strategy", "Pullback Strategy"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
