@@ -37,6 +37,7 @@ def documents() -> None:
         display_csv("Breakout Screener")
         display_csv("Post Breakout")
         display_csv("Defensive Sell Rules")
+        display_csv("Symptoms of a failed breakout")
 
     elif selected_page == "Pullback Strategy":
         display_csv("Pullback Setup")
