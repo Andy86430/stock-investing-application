@@ -38,6 +38,10 @@ def documents() -> None:
         display_csv("Post Breakout")
         display_csv("Defensive Sell Rules")
         display_csv("Symptoms of a failed breakout")
+        display_csv("Pullback to a buy point")
+        display_csv("Early entry on potential breakouts")
+        display_csv("Breakaway Gap")
+
 
     elif selected_page == "Pullback Strategy":
         display_csv("Pullback Setup")
