@@ -36,8 +36,7 @@ def documents() -> None:
         display_csv("Breakout Strategy")
 
     elif selected_page == "Pullback Strategy":
-        display_csv("Pullback Setup")
-        display_csv("Pullback Screener")
+        display_csv("Pullback Strategy")
 
     elif selected_page == "Climax Top":
         display_csv("Climax Top")
