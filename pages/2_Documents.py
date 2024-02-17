@@ -29,7 +29,7 @@ def documents() -> None:
     elif selected_page == "Market Timing":
         display_csv("Market Timing")
 
-    elif selected_page == "CStock Confirmed Uptrend":
+    elif selected_page == "Stock Confirmed Uptrend":
         display_csv("Stock Confirmed Uptrend")
 
     elif selected_page == "Breakout Strategy":
