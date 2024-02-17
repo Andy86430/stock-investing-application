@@ -14,7 +14,7 @@ def display_csv(name):
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Confirmed Uptrend", "Market Top", 
+    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Stock Confirmed Uptrend", "Market Top", 
                     "Climax Top", "Profit Taking", "Indicator Categories", 
                     "Find The Best IPO Stocks",
                     "Breakout Strategy", "Pullback Strategy"]
@@ -29,8 +29,8 @@ def documents() -> None:
     elif selected_page == "Market Timing":
         display_csv("Market Timing")
 
-    elif selected_page == "Confirmed Uptrend":
-        display_csv("Confirmed Uptrend")
+    elif selected_page == "CStock Confirmed Uptrend":
+        display_csv("Stock Confirmed Uptrend")
 
     elif selected_page == "Breakout Strategy":
         display_csv("Breakout Strategy")
