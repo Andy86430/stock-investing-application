@@ -15,8 +15,7 @@ def documents() -> None:
 
     # Sidebar navigation
     page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Stock Confirmed Uptrend", 
-                    "Climax Top", "Profit Taking", "Indicator Categories", 
-                    "Find The Best IPO Stocks",
+                    "Climax Top", "Profit Taking", "Find The Best IPO Stocks",
                     "Breakout Strategy", "Pullback Strategy"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
@@ -46,15 +45,6 @@ def documents() -> None:
 
     elif selected_page == "Profit Taking":
         display_csv("Profit Taking")
-
-    elif selected_page == "Indicator Categories":
-        display_csv("Indicator Categories")
-        bullet_points = """
-        - Volume is an independent variable hence volume indicators are preferred.
-        - Avoid collinearity.
-        - Focus on AD, II, MFI, VWMACD.
-        """
-        st.markdown(bullet_points)
 
 # Page config
 st.set_page_config(page_title="Documents", page_icon="book")
