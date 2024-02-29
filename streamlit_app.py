@@ -68,6 +68,7 @@ def run():
         - [TradingView](https://www.tradingview.com/chart/3JwfLY94)
         - [Tipranks](https://www.tipranks.com/dashboard)
         - [IBD](https://www.investors.com/)
+        - [MarketSmith](https://marketsmith.investors.com/)
     """
     )
 
