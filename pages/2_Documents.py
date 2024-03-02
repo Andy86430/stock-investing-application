@@ -15,8 +15,9 @@ def documents() -> None:
 
     # Sidebar navigation
     page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Stock Confirmed Uptrend", 
-                    "Climax Top", "Profit Taking", "Find The Best IPO Stocks",
-                    "Breakout Strategy", "Pullback Strategy"]
+                    "Climax Top", "Profit Taking", "Find The Best IPO Stocks", "How To Hedge An Overextended Stock"
+                    "Breakout Strategy", "Pullback Strategy", "Bullish Mean Reversion Strategy", "Bullish Divergence Strategy", 
+                    "Coiled Spring Strategy"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
     if selected_page == "Mistakes to Avoid":
@@ -45,6 +46,18 @@ def documents() -> None:
 
     elif selected_page == "Profit Taking":
         display_csv("Profit Taking")
+
+    elif selected_page == "How To Hedge An Overextended Stock":
+        display_csv("How To Hedge An Overextended Stock")
+
+    elif selected_page == "Bullish Mean Reversion Strategy":
+        display_csv("Bullish Mean Reversion Strategy")
+
+    elif selected_page == "Bullish Divergence Strategy":
+        display_csv("Bullish Divergence Strategy")
+
+    elif selected_page == "Coiled Spring Strategy":
+        display_csv("Coiled Spring Strategy")
 
 # Page config
 st.set_page_config(page_title="Documents", page_icon="book")
