@@ -81,3 +81,5 @@ def highlight_cells(val, column_name):
         return 'background-color: green' if val in ["Strong Buy","Buy"] else 'background-color: red'
     elif column_name == "IBD Market Outlook":
         return 'background-color: green' if val in ["Confirmed Uptrend"] else 'background-color: red'
+    else:
+        return ''  # No formatting for other columns
