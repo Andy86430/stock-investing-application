@@ -6,6 +6,7 @@ from modules.config import jscode_buy_range
 from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_zack
+from modules.functions import highlight_IBD_outlook
 
 def display_csv(name):
 
@@ -17,6 +18,7 @@ def display_csv(name):
 
     # Apply the conditional formatting to the specified columns in DataFrame
     styled_df = df.style.apply(highlight_zack, subset=pd.IndexSlice[:, "Zack Rank"])
+    styled_df = df.style.apply(highlight_IBD_outlook, subset=pd.IndexSlice[:, "IBD Market Outlook"])
 
     st.title(name)
     st.write(styled_df, use_container_width=True)
