@@ -89,5 +89,7 @@ def highlight_cells(val):
         return ['background-color: green' if x >80 else 'background-color: orange' for x in val]
     elif val.name == 'Bollinger Squeeze':
         return ['background-color: green' if x == "Yes" else 'background-color: orange' for x in val]
+    elif val.name == 'Type of Base':
+        return ['background-color: green' if x == "Cup with Handle" else 'background-color: orange' for x in val]
     else:
         return [''] * len(val)
