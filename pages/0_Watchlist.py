@@ -5,6 +5,7 @@ from modules.functions import select_table
 from modules.config import jscode_buy_range
 from modules.functions import stock_price
 from modules.functions import Zacks_Rank
+import display_csv
 
 def watchlist() -> None:
 
@@ -52,6 +53,9 @@ def watchlist() -> None:
             portfolio.clear()
             set_with_dataframe(worksheet=portfolio, dataframe=portfolio_df_updated, include_index=False, include_column_header=True, resize=True)
             st.experimental_rerun()
+
+    # Display stock features
+    display_csv("Breakout Candidate")
 
 # Page config
 st.set_page_config(page_title="Watchlist", page_icon="book")
