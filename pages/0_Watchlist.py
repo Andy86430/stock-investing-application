@@ -15,7 +15,7 @@ def display_csv(name):
     df = pd.DataFrame.from_dict(wks.get_all_records())
     df = df.set_index(df.columns[0])
 
-    # Apply the conditional formatting to the specified columns in your DataFrame
+    # Apply the conditional formatting to the specified columns in DataFrame
     styled_df = df.style.apply(highlight_zack, subset=pd.IndexSlice[:, "Zack Rank"])
 
     st.title(name)

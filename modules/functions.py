@@ -77,4 +77,4 @@ def stock_price(Symbol):
 
 # Define conditional formatting function
 def highlight_zack(val):
-    return ['background-color: green' if v.isin(["Strong Buy","Buy"]) else 'background-color: red' for v in val]
+    return ['background-color: green' if v in ["Strong Buy","Buy"] else 'background-color: red' for v in val]
