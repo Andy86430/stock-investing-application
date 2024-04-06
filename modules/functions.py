@@ -76,9 +76,8 @@ def stock_price(Symbol):
     return price
 
 # Define conditional formatting function
-def highlight_zack(val):
-    return ['background-color: green' if v in ["Strong Buy","Buy"] else 'background-color: red' for v in val]
-
-# Define conditional formatting function
-def highlight_IBD_outlook(val):
-    return ['background-color: green' if v in ["Confirmed Uptrend"] else 'background-color: red' for v in val]
+def highlight_cells(val, column_name):
+    if column_name == 'Zack Rank':
+        return ['background-color: green' if v in ["Strong Buy","Buy"] else 'background-color: red' for v in val]
+    elif column_name == 'IBD Market Outlook':
+        return ['background-color: green' if v in ["Confirmed Uptrend"] else 'background-color: red' for v in val]
