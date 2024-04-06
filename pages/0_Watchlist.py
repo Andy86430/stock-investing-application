@@ -21,7 +21,7 @@ def display_csv(name):
     df = df.style.apply(highlight_IBD_outlook, subset=pd.IndexSlice[:, "IBD Market Outlook"])
 
     st.title(name)
-    st.write(styled_df, use_container_width=True)
+    st.write(df, use_container_width=True)
 
 def watchlist() -> None:
 
