@@ -14,7 +14,7 @@ def display_csv(name):
     df = pd.DataFrame.from_dict(wks.get_all_records())
     df = df.set_index(df.columns[0])
     st.title(name)
-    st.table(df)
+    st.dataframe(df, use_container_width=True)
 
 def watchlist() -> None:
 
