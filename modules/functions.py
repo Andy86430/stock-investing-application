@@ -83,5 +83,7 @@ def highlight_cells(val):
         return ['background-color: green' if x == "Confirmed Uptrend" else 'background-color: red' for x in val]
     elif val.name == "OBV" or val.name == "MACD line (not signal line)":
         return ['background-color: green' if x == "At/Near New High" else 'background-color: red' for x in val]
+    elif val.name == '%b':
+        return ['background-color: green' if x >0.8 else 'background-color: orange' for x in val]
     else:
         return [''] * len(val)
