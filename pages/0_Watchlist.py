@@ -65,6 +65,7 @@ def watchlist() -> None:
 
     # Display stock features
     display_csv("Breakout Candidate")
+    display_csv("Coiled Spring Candidate")
 
 # Page config
 st.set_page_config(page_title="Watchlist", page_icon="book")
