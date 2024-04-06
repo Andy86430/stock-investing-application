@@ -81,5 +81,7 @@ def highlight_cells(val):
         return ['background-color: green' if x in ["Strong Buy", "Buy"] else 'background-color: red' for x in val]
     elif val.name == "IBD Market Outlook":
         return ['background-color: green' if x == "Confirmed Uptrend" else 'background-color: red' for x in val]
+    elif val.name == "OBV":
+        return ['background-color: green' if x == "At/Near New High" else 'background-color: red' for x in val]
     else:
         return [''] * len(val)
