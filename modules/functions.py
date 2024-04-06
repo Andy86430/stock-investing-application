@@ -87,7 +87,7 @@ def highlight_cells(val):
         return ['background-color: green' if x >0.8 else 'background-color: orange' for x in val]
     elif val.name == 'MFI (10)':
         return ['background-color: green' if x >80 else 'background-color: orange' for x in val]
-    elif val.name == 'Bollinger Squeeze':
+    elif val.name == 'Bollinger Squeeze' or val.name == 'Leaderboard':
         return ['background-color: green' if x == "Yes" else 'background-color: orange' for x in val]
     elif val.name == 'Type of Base':
         return ['background-color: green' if x == "Cup with Handle" else 'background-color: orange' for x in val]
@@ -95,6 +95,8 @@ def highlight_cells(val):
         return ['background-color: green' if str(x).startswith(('1', '2')) else 'background-color: orange' if str(x).startswith(('3')) else 'background-color: orange' for x in val]
     elif val.name == 'Base Depth':
         return ['background-color: red' if float(x.strip('%')) > 30 else 'background-color: green' for x in val]
+    elif val.name == 'Breakout Vol% (Daily)':
+        return ['background-color: green' if float(x.strip('%')) > 40 else 'background-color: red' if float(x.strip('%')) < 0 else 'background-color: orange' for x in val]
     elif val.name == 'Handle Depth':
         return ['background-color: orange' if x=="N/A" else 'background-color: red' if float(x.strip('%')) > 15 else 'background-color: green' for x in val]
     else:
