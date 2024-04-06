@@ -5,6 +5,7 @@ from modules.functions import select_table
 from modules.config import jscode_buy_range
 from modules.functions import stock_price
 from modules.functions import Zacks_Rank
+from modules.functions import highlight_zack
 
 def display_csv(name):
 
@@ -13,8 +14,12 @@ def display_csv(name):
     wks = client.open("Database").worksheet(name)
     df = pd.DataFrame.from_dict(wks.get_all_records())
     df = df.set_index(df.columns[0])
+
+    # Apply the conditional formatting to the specified columns in your DataFrame
+    styled_df = df.style.apply(highlight_zack, subset=pd.IndexSlice[:, "Zack Rank"])
+
     st.title(name)
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(styled_df, use_container_width=True)
 
 def watchlist() -> None:
 

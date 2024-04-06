@@ -74,3 +74,7 @@ def stock_price(Symbol):
     stock_info = yf.Ticker(Symbol).info
     price = stock_info['currentPrice']
     return price
+
+# Define conditional formatting function
+def highlight_zack(val):
+    return ['background-color: green' if v.isin(["Strong Buy","Buy"]) else 'background-color: red' for v in val]
