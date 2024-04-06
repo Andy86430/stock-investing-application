@@ -19,7 +19,7 @@ def display_csv(name):
     styled_df = df.style.apply(highlight_zack, subset=pd.IndexSlice[:, "Zack Rank"])
 
     st.title(name)
-    st.dataframe(styled_df, use_container_width=True)
+    st.write(styled_df, use_container_width=True)
 
 def watchlist() -> None:
 
