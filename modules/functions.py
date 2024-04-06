@@ -99,5 +99,7 @@ def highlight_cells(val):
         return ['background-color: green' if float(x.strip('%')) > 40 else 'background-color: red' if float(x.strip('%')) < 0 else 'background-color: orange' for x in val]
     elif val.name == 'Handle Depth':
         return ['background-color: orange' if x=="N/A" else 'background-color: red' if float(x.strip('%')) > 15 else 'background-color: green' for x in val]
+    elif val.name == '50-Day > 150-Day > 200-Day' or val.name == 'RS Line Within 5% of New High':
+        return ['background-color: green' if x == 1 else 'background-color: red' for x in val]
     else:
         return [''] * len(val)
