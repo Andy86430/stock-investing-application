@@ -5,7 +5,16 @@ from modules.functions import select_table
 from modules.config import jscode_buy_range
 from modules.functions import stock_price
 from modules.functions import Zacks_Rank
-import display_csv
+
+def display_csv(name):
+
+    # Display a Google sheet
+    from streamlit_app import client
+    wks = client.open("Database").worksheet(name)
+    df = pd.DataFrame.from_dict(wks.get_all_records())
+    df = df.set_index(df.columns[0])
+    st.title(name)
+    st.table(df)
 
 def watchlist() -> None:
 
