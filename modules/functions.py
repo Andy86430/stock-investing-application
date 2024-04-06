@@ -95,7 +95,7 @@ def highlight_cells(val):
         return ['background-color: green' if str(x).startswith(('1', '2')) else 'background-color: orange' if str(x).startswith(('3')) else 'background-color: orange' for x in val]
     elif val.name == 'Base Depth':
         return ['background-color: red' if float(x.strip('%')) > 30 else 'background-color: green' for x in val]
-    elif val.name == 'Breakout Vol% (Daily)':
+    elif val.name == 'Breakout Vol% (Daily)' or val.name == 'Breakout Vol% (Weekly)':
         return ['background-color: green' if float(x.strip('%')) > 40 else 'background-color: red' if float(x.strip('%')) < 0 else 'background-color: orange' for x in val]
     elif val.name == 'Handle Depth':
         return ['background-color: orange' if x=="N/A" else 'background-color: red' if float(x.strip('%')) > 15 else 'background-color: green' for x in val]
