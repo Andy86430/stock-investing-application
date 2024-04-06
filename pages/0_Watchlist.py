@@ -17,8 +17,7 @@ def display_csv(name):
     df = df.set_index(df.columns[0])
 
     # Apply the conditional formatting to the specified columns in DataFrame
-    df = df.style.apply(highlight_zack, subset=pd.IndexSlice[:, "Zack Rank"])
-    df = df.style.apply(highlight_IBD_outlook, subset=pd.IndexSlice[:, "IBD Market Outlook"])
+    df = df.style.applymap(highlight_zack, subset=pd.IndexSlice[:, "Zack Rank"]).applymap(highlight_IBD_outlook, subset=pd.IndexSlice[:, "IBD Market Outlook"])
 
     st.title(name)
     st.write(df, use_container_width=True)
