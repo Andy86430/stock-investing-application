@@ -75,6 +75,13 @@ def stock_price(Symbol):
     price = stock_info['currentPrice']
     return price
 
+# Custom function
+def starts_with_letter_from_list(string, letter_list):
+    for letter in letter_list:
+        if string.startswith(letter):
+            return True
+    return False
+
 # Define conditional formatting function
 def highlight_cells(val):
     if val.name == "Zack Rank":
@@ -118,6 +125,12 @@ def highlight_cells(val):
 
     elif val.name == 'RS Rating':
         return ['background-color: green' if x >= 90 else 'background-color: red' if x < 80 else 'background-color: orange' for x in val]
+
+    elif val.name == 'SMR Rating' or val.name == 'A/D Rating' or val.name == 'Timeliness Rating':
+        return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C"]) else 'background-color: red' for x in val]
+
+    elif val.name == 'Ind Group RS' or val.name == 'Sponsor Rating':
+        return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C","D"]) else 'background-color: red' for x in val]
 
     else:
         return [''] * len(val)
