@@ -23,7 +23,10 @@ def display_csv(name):
     df = df.set_index(df.columns[0])
 
     # Apply the conditional formatting to the specified columns in DataFrame
-    styled_df = df.style.apply(highlight_cells, axis=0).apply(highlight_cells_ascending, subset=['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr'], axis=1)
+    sales_col = ['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr']
+    EPS_col = ['EPS % Chg 2 Q Ago (-/+)','EPS % Chg 1 Q Ago (-/+)','EPS % Chg Last Qtr (-/+)']
+    styled_df = df.style.apply(highlight_cells, axis=0).apply(highlight_cells_ascending, subset=sales_col, axis=1) \
+    .apply(highlight_cells_ascending, subset=EPS_col, axis=1)
 
     st.title(name)
     st.write(styled_df, use_container_width=True)
