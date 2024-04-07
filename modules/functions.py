@@ -141,5 +141,8 @@ def highlight_cells(val):
     elif val.name == 'Ind Group Rank':
         return ['background-color: green' if x <= 40 else 'background-color: orange' for x in val]
 
+    if val.name == "No. of Funds - Last 4 Qtrs":
+        return ['background-color: red' if x in ["Decreasing", "Decreased"] else 'background-color: green' for x in val]
+
     else:
         return [''] * len(val)
