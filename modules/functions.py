@@ -164,4 +164,4 @@ def highlight_cells_sales(row):
 # Define function to apply conditional formatting
 def highlight_max(s):
     is_max = s == s.max()
-    return ['background-color: yellow' if v else '' for v in is_max]
+    return ['background-color: green' if v else '' for v in is_max]
