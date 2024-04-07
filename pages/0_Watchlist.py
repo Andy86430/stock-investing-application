@@ -17,7 +17,7 @@ def display_csv(name):
     df = df.set_index(df.columns[0])
 
     # Apply the conditional formatting to the specified columns in DataFrame
-    styled_df = df.style.apply(highlight_cells, axis=0).apply(highlight_cells_bigger, subset=["Sales % Chg 2 Q Ago", "Sales % Chg 1 Q Ago", "Sales % Chg Lst Qtr"])
+    styled_df = df.style.apply(highlight_cells, axis=0).applymap(highlight_cells_bigger, subset=["Sales % Chg 2 Q Ago", "Sales % Chg 1 Q Ago", "Sales % Chg Lst Qtr"])
 
     st.title(name)
     st.write(styled_df, use_container_width=True)
