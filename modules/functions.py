@@ -143,7 +143,7 @@ def highlight_cells(val):
 
     if val.name == "No. of Funds - Last 4 Qtrs":
         return ['background-color: red' if x in ["Decreasing", "Decreased"] else 'background-color: green' for x in val]
-
+    
     else:
         return [''] * len(val)
 
@@ -160,3 +160,8 @@ def highlight_cells_sales(row):
         return ['background-color: green'] * len(row)
     else:
         return [''] * len(row)  # No formatting
+    
+# Define function to apply conditional formatting
+def highlight_max(s):
+    is_max = s == s.max()
+    return ['background-color: yellow' if v else '' for v in is_max]
