@@ -14,21 +14,6 @@ def highlight_cells_ascending(val):
     else:
         return ''
 
-# Define a function to combine styles
-def combine_styles(x, y):
-    if isinstance(x, str):
-        return x
-    elif isinstance(y, str):
-        return y
-    else:
-        # Combine styles
-        combined_style = ''
-        if 'background-color' in x:
-            combined_style += x['background-color']
-        if 'background-color' in y:
-            combined_style += y['background-color']
-        return combined_style
-
 def display_csv(name):
 
     # Display a Google sheet
@@ -41,11 +26,8 @@ def display_csv(name):
     styled_df = df.style.apply(highlight_cells, axis=0)
     styled_df1 = df.style.applymap(highlight_cells_ascending, subset=['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr'])
 
-    # Combine the styled DataFrames
-    styled_df_combined = styled_df.applymap(lambda x: combine_styles(x, styled_df1._translate(x)))
-
     st.title(name)
-    st.write(styled_df_combined, use_container_width=True)
+    st.write(styled_df1, use_container_width=True)
 
 def watchlist() -> None:
 
