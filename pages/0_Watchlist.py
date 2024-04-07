@@ -8,7 +8,7 @@ from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
 
 # Custom function to apply conditional formatting for specified columns
-def highlight_cells_ascending(val,df):
+def highlight_cells_ascending(val):
     if val[0] < val[1] < val[2]:
         return 'background-color: green'
     else:
