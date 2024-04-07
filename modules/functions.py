@@ -79,27 +79,42 @@ def stock_price(Symbol):
 def highlight_cells(val):
     if val.name == "Zack Rank":
         return ['background-color: green' if x in ["Strong Buy", "Buy"] else 'background-color: red' for x in val]
+    
     elif val.name == "IBD Market Outlook":
         return ['background-color: green' if x == "Confirmed Uptrend" else 'background-color: red' for x in val]
+    
     elif val.name == "OBV" or val.name == "MACD line (not signal line)":
         return ['background-color: green' if x == "At/Near New High" else 'background-color: red' for x in val]
+    
     elif val.name == '%b':
         return ['background-color: green' if x >0.8 else 'background-color: orange' for x in val]
+    
     elif val.name == 'MFI (10)':
         return ['background-color: green' if x >80 else 'background-color: orange' for x in val]
+    
     elif val.name == 'Bollinger Squeeze' or val.name == 'Leaderboard':
         return ['background-color: green' if x == "Yes" else 'background-color: orange' for x in val]
+    
     elif val.name == 'Type of Base':
         return ['background-color: green' if x == "Cup with Handle" else 'background-color: orange' for x in val]
+    
     elif val.name == 'Stage':
         return ['background-color: green' if str(x).startswith(('1', '2')) else 'background-color: orange' if str(x).startswith(('3')) else 'background-color: orange' for x in val]
+    
     elif val.name == 'Base Depth':
         return ['background-color: red' if float(x.strip('%')) > 30 else 'background-color: green' for x in val]
+    
     elif val.name == 'Breakout Vol% (Daily)' or val.name == 'Breakout Vol% (Weekly)':
         return ['background-color: green' if float(x.strip('%')) > 40 else 'background-color: red' if float(x.strip('%')) < 0 else 'background-color: orange' for x in val]
+    
     elif val.name == 'Handle Depth':
         return ['background-color: orange' if x=="N/A" else 'background-color: red' if float(x.strip('%')) > 15 else 'background-color: green' for x in val]
+    
     elif val.name == '50-Day > 150-Day > 200-Day' or val.name == 'RS Line Within 5% of New High':
         return ['background-color: green' if x == 1 else 'background-color: red' for x in val]
+    
+    elif val.name == 'EPS Rating' or val.name == 'Comp Rating':
+        return ['background-color: green' if x >= 80 else 'background-color: red' for x in val]
+    
     else:
         return [''] * len(val)
