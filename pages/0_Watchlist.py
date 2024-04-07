@@ -6,7 +6,13 @@ from modules.config import jscode_buy_range
 from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
-from modules.functions import highlight_cells_ascending
+
+# Custom function to apply conditional formatting for specified columns
+def highlight_cells_ascending(val):
+    if df['Sales % Chg 2 Q Ago'][val] < df['Sales % Chg 1 Q Ago'][val] < df['Sales % Chg Lst Qtr'][val]:
+        return 'background-color: green'
+    else:
+        return ''
 
 def display_csv(name):
 
