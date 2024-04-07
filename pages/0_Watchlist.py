@@ -6,13 +6,7 @@ from modules.config import jscode_buy_range
 from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
-
-# Custom function to apply conditional formatting for specified columns
-def highlight_cells_ascending(row):
-    if row[0] < row[1] < row[2]:
-        return ['background-color: green'] * len(row)
-    else:
-        return [''] * len(row)
+from modules.functions import highlight_cells_ascending
 
 def display_csv(name):
 
