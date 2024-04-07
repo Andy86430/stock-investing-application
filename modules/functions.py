@@ -144,18 +144,5 @@ def highlight_cells(val):
     if val.name == "No. of Funds - Last 4 Qtrs":
         return ['background-color: red' if x in ["Decreasing", "Decreased"] else 'background-color: green' for x in val]
 
-    if val.name == "Sales % Chg Lst Qtr":
-
-        # Extract values from the specified columns
-        val1 = row["Sales % Chg 2 Q Ago"]
-        val2 = row["Sales % Chg 1 Q Ago"]
-        val3 = row["Sales % Chg Lst Qtr"]
-
-        # Compare the values
-        if val3 > val2 and val2 > val1:
-            return ['background-color: green'] * len(row)
-        else:
-            return [''] * len(row) 
-
     else:
         return [''] * len(val)
