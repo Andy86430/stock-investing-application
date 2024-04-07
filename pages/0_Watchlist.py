@@ -8,8 +8,8 @@ from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
 
 # Custom function to apply conditional formatting for specified columns
-def highlight_cells_ascending(val):
-    if df['Sales % Chg 2 Q Ago'][val] < df['Sales % Chg 1 Q Ago'][val] < df['Sales % Chg Lst Qtr'][val]:
+def highlight_cells_ascending(val,df):
+    if val[0] < val[1] < val[2]:
         return 'background-color: green'
     else:
         return ''
@@ -23,11 +23,10 @@ def display_csv(name):
     df = df.set_index(df.columns[0])
 
     # Apply the conditional formatting to the specified columns in DataFrame
-    styled_df = df.style.apply(highlight_cells, axis=0)
-    styled_df1 = df.style.applymap(highlight_cells_ascending, subset=['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr'])
+    styled_df = df.style.apply(highlight_cells, axis=0).applymap(highlight_cells_ascending, subset=pd.IndexSlice[:, ['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr']])
 
     st.title(name)
-    st.write(styled_df1, use_container_width=True)
+    st.write(styled_df, use_container_width=True)
 
 def watchlist() -> None:
 
