@@ -6,6 +6,7 @@ from modules.config import jscode_buy_range
 from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
+from modules.functions import highlight_cells_sales
 
 def display_csv(name):
 
@@ -17,6 +18,7 @@ def display_csv(name):
 
     # Apply the conditional formatting to the specified columns in DataFrame
     styled_df = df.style.apply(highlight_cells, axis=0)
+    styled_df = styled_df.style.apply(highlight_cells_sales, axis=1)
 
     st.title(name)
     st.write(styled_df, use_container_width=True)
