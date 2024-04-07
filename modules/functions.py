@@ -145,4 +145,4 @@ def highlight_cells(val):
         return ['background-color: red' if x in ["Decreasing", "Decreased"] else 'background-color: green' for x in val]
 
     else:
-        return [''] * len(val.name)
+        return [''] * len(val)
