@@ -27,7 +27,7 @@ def display_csv(name):
     styled_df1 = df.style.applymap(highlight_cells_ascending, subset=['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr'])
 
     # Combine the styled DataFrames
-    styled_df_combined = styled_df.combine_first(styled_df1)
+    styled_df_combined = styled_df.combine(styled_df1)
 
     st.title(name)
     st.write(styled_df_combined, use_container_width=True)
