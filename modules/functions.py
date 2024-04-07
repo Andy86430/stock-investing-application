@@ -99,7 +99,7 @@ def highlight_cells(val):
     elif val.name == 'MFI (10)':
         return ['background-color: green' if x >= 80 else 'background-color: orange' for x in val]
     
-    elif val.name == 'Bollinger Squeeze' or val.name == 'Leaderboard':
+    elif val.name == 'Bollinger Squeeze' or val.name == 'Leaderboard' or val.name == 'In Strong Uptrend' or val.name == 'Volatility Contraction Pattern':
         return ['background-color: green' if x == "Yes" else 'background-color: orange' for x in val]
     
     elif val.name == 'Type of Base':
