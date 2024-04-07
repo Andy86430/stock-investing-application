@@ -83,7 +83,7 @@ def starts_with_letter_from_list(string, letter_list):
     return False
 
 # Define conditional formatting function
-def highlight_cells(val):
+def highlight_cells(row, val):
     if val.name == "Zack Rank":
         return ['background-color: green' if x in ["Strong Buy", "Buy"] else 'background-color: red' for x in val]
     
@@ -141,15 +141,12 @@ def highlight_cells(val):
     elif val.name == 'Ind Group Rank':
         return ['background-color: green' if x <= 40 else 'background-color: orange' for x in val]
 
-    if val.name == "No. of Funds - Last 4 Qtrs":
+    elif val.name == "No. of Funds - Last 4 Qtrs":
         return ['background-color: red' if x in ["Decreasing", "Decreased"] else 'background-color: green' for x in val]
-    
+
+    elif val.name in ["Sales % Chg 2 Q Ago", "Sales % Chg 1 Q Ago", "Sales % Chg Lst Qtr"]:
+        if row["Sales % Chg Lst Qtr"] > row["Sales % Chg 1 Q Ago"] > row["Sales % Chg 2 Q Ago"]:
+            return 'background-color: green'
+
     else:
         return [''] * len(val)
-    
-# Define function to apply conditional formatting
-def highlight_cells_bigger(val):
-    if val[0] < val[1] < val[2]:
-        return 'background-color: green'
-    else:
-        return ''
