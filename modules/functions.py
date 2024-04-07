@@ -83,70 +83,66 @@ def starts_with_letter_from_list(string, letter_list):
     return False
 
 # Define conditional formatting function
-def highlight_cells(row, val):
-    if val == "Zack Rank":
-        return ['background-color: green' if x in ["Strong Buy", "Buy"] else 'background-color: red' for x in row(val)]
+def highlight_cells(val):
+    if val.name == "Zack Rank":
+        return ['background-color: green' if x in ["Strong Buy", "Buy"] else 'background-color: red' for x in val]
     
-    elif val == "IBD Market Outlook":
-        return ['background-color: green' if x == "Confirmed Uptrend" else 'background-color: red' for x in row(val)]
+    elif val.name == "IBD Market Outlook":
+        return ['background-color: green' if x == "Confirmed Uptrend" else 'background-color: red' for x in val]
     
-    elif val == "OBV" or val == "MACD line (not signal line)":
-        return ['background-color: green' if x == "At/Near New High" else 'background-color: red' for x in row(val)]
+    elif val.name == "OBV" or val.name == "MACD line (not signal line)":
+        return ['background-color: green' if x == "At/Near New High" else 'background-color: red' for x in val]
     
-    elif val == '%b':
-        return ['background-color: green' if x >= 0.8 else 'background-color: orange' for x in row(val)]
+    elif val.name == '%b':
+        return ['background-color: green' if x >= 0.8 else 'background-color: orange' for x in val]
     
-    elif val == 'MFI (10)':
-        return ['background-color: green' if x >= 80 else 'background-color: orange' for x in row(val)]
+    elif val.name == 'MFI (10)':
+        return ['background-color: green' if x >= 80 else 'background-color: orange' for x in val]
     
-    elif val == 'Bollinger Squeeze' or val == 'Leaderboard':
-        return ['background-color: green' if x == "Yes" else 'background-color: orange' for x in row(val)]
+    elif val.name == 'Bollinger Squeeze' or val.name == 'Leaderboard':
+        return ['background-color: green' if x == "Yes" else 'background-color: orange' for x in val]
     
-    elif val == 'Type of Base':
-        return ['background-color: green' if x == "Cup with Handle" else 'background-color: orange' for x in row(val)]
+    elif val.name == 'Type of Base':
+        return ['background-color: green' if x == "Cup with Handle" else 'background-color: orange' for x in val]
     
-    elif val == 'Stage':
-        return ['background-color: green' if str(x).startswith(('1', '2')) else 'background-color: orange' if str(x).startswith(('3')) else 'background-color: orange' for x in row(val)]
+    elif val.name == 'Stage':
+        return ['background-color: green' if str(x).startswith(('1', '2')) else 'background-color: orange' if str(x).startswith(('3')) else 'background-color: orange' for x in val]
     
-    elif val == 'Base Depth':
-        return ['background-color: red' if float(x.strip('%')) > 30 else 'background-color: green' for x in row(val)]
+    elif val.name == 'Base Depth':
+        return ['background-color: red' if float(x.strip('%')) > 30 else 'background-color: green' for x in val]
     
-    elif val == 'Breakout Vol% (Daily)' or val == 'Breakout Vol% (Weekly)':
-        return ['background-color: green' if float(x.strip('%')) >= 40 else 'background-color: red' if float(x.strip('%')) < 0 else 'background-color: orange' for x in row(val)]
+    elif val.name == 'Breakout Vol% (Daily)' or val.name == 'Breakout Vol% (Weekly)':
+        return ['background-color: green' if float(x.strip('%')) >= 40 else 'background-color: red' if float(x.strip('%')) < 0 else 'background-color: orange' for x in val]
     
-    elif val == 'Handle Depth':
-        return ['background-color: orange' if x=="N/A" else 'background-color: red' if float(x.strip('%')) > 15 else 'background-color: green' for x in row(val)]
+    elif val.name == 'Handle Depth':
+        return ['background-color: orange' if x=="N/A" else 'background-color: red' if float(x.strip('%')) > 15 else 'background-color: green' for x in val]
     
-    elif val == '50-Day > 150-Day > 200-Day' or val == 'RS Line Within 5% of New High':
-        return ['background-color: green' if x == 1 else 'background-color: red' for x in row(val)]
+    elif val.name == '50-Day > 150-Day > 200-Day' or val.name == 'RS Line Within 5% of New High':
+        return ['background-color: green' if x == 1 else 'background-color: red' for x in val]
     
-    elif val == 'EPS Rating' or val == 'Comp Rating':
-        return ['background-color: green' if x >= 80 else 'background-color: red' for x in row(val)]
+    elif val.name == 'EPS Rating' or val.name == 'Comp Rating':
+        return ['background-color: green' if x >= 80 else 'background-color: red' for x in val]
 
-    elif val == 'RS Rating':
-        return ['background-color: green' if x >= 90 else 'background-color: red' if x < 80 else 'background-color: orange' for x in row(val)]
+    elif val.name == 'RS Rating':
+        return ['background-color: green' if x >= 90 else 'background-color: red' if x < 80 else 'background-color: orange' for x in val]
 
-    elif val == 'SMR Rating' or val == 'A/D Rating' or val == 'Timeliness Rating':
-        return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C"]) else 'background-color: red' for x in row(val)]
+    elif val.name == 'SMR Rating' or val.name == 'A/D Rating' or val.name == 'Timeliness Rating':
+        return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C"]) else 'background-color: red' for x in val]
 
-    elif val == 'Ind Group RS' or val == 'Sponsor Rating':
-        return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C","D"]) else 'background-color: red' for x in row(val)]
+    elif val.name == 'Ind Group RS' or val.name == 'Sponsor Rating':
+        return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C","D"]) else 'background-color: red' for x in val]
 
-    elif val == 'Price to Sales':
-        return ['background-color: green' if x <= 3 else 'background-color: orange' for x in row(val)]
+    elif val.name == 'Price to Sales':
+        return ['background-color: green' if x <= 3 else 'background-color: orange' for x in val]
 
-    elif val == '50-Day Avg Vol (1000s)':
-        return ['background-color: green' if x >= 400 else 'background-color: red' for x in row(val)]
+    elif val.name == '50-Day Avg Vol (1000s)':
+        return ['background-color: green' if x >= 400 else 'background-color: red' for x in val]
     
-    elif val == 'Ind Group Rank':
-        return ['background-color: green' if x <= 40 else 'background-color: orange' for x in row(val)]
+    elif val.name == 'Ind Group Rank':
+        return ['background-color: green' if x <= 40 else 'background-color: orange' for x in val]
 
-    elif val == "No. of Funds - Last 4 Qtrs":
-        return ['background-color: red' if x in ["Decreasing", "Decreased"] else 'background-color: green' for x in row(val)]
-
-    elif val in ["Sales % Chg 2 Q Ago", "Sales % Chg 1 Q Ago", "Sales % Chg Lst Qtr"]:
-        if row["Sales % Chg Lst Qtr"] > row["Sales % Chg 1 Q Ago"] > row["Sales % Chg 2 Q Ago"]:
-            return 'background-color: green'
+    elif val.name == "No. of Funds - Last 4 Qtrs":
+        return ['background-color: red' if x in ["Decreasing", "Decreased"] else 'background-color: green' for x in val]
 
     else:
-        return [''] * len(val)
+        return [''] * len(val.name)
