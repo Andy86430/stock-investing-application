@@ -75,7 +75,7 @@ def stock_price(Symbol):
     price = stock_info['currentPrice']
     return price
 
-# Custom function
+# starts_with_letter_from_list
 def starts_with_letter_from_list(string, letter_list):
     for letter in letter_list:
         if string.startswith(letter):
