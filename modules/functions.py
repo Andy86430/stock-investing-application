@@ -146,22 +146,10 @@ def highlight_cells(val):
     
     else:
         return [''] * len(val)
-
-# highlight accelerating earnings/sales
-def highlight_cells_sales(row):
-
-    # Extract values from the specified columns
-    val1 = row["Sales % Chg 2 Q Ago"]
-    val2 = row["Sales % Chg 1 Q Ago"]
-    val3 = row["Sales % Chg Lst Qtr"]
-
-    # Compare the values
-    if val3 > val2 and val2 > val1:
-        return ['background-color: green'] * len(row)
-    else:
-        return [''] * len(row)  # No formatting
     
 # Define function to apply conditional formatting
-def highlight_max(s):
-    is_max = s == s.max()
-    return ['background-color: green' if v else '' for v in is_max]
+def highlight_cells_bigger(val):
+    if val[0] < val[1] < val[2]:
+        return 'background-color: green'
+    else:
+        return ''
