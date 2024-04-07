@@ -73,6 +73,7 @@ def watchlist() -> None:
 
     # Display stock features
     display_csv("Breakout Candidate")
+    display_csv("Pullback Candidate")
     display_csv("Coiled Spring Candidate")
 
 # Page config
