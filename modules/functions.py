@@ -146,3 +146,10 @@ def highlight_cells(val):
 
     else:
         return [''] * len(val)
+    
+# Custom function to apply conditional formatting for specified columns
+def highlight_cells_ascending(val):
+    if df['Sales % Chg 2 Q Ago'][val] < df['Sales % Chg 1 Q Ago'][val] and df['Sales % Chg 1 Q Ago'][val] < df[Sales % Chg Lst Qtr][val]:
+        return 'background-color: green'
+    else:
+        return ''

@@ -6,6 +6,7 @@ from modules.config import jscode_buy_range
 from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
+from modules.functions import highlight_cells_ascending
 
 def display_csv(name):
 
@@ -17,9 +18,13 @@ def display_csv(name):
 
     # Apply the conditional formatting to the specified columns in DataFrame
     styled_df = df.style.apply(highlight_cells, axis=0)
+    styled_df1 = df.style.applymap(highlight_cells_ascending, subset=['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr'])
+
+    # Combine the styled DataFrames
+    styled_df_combined = styled_df.combine_first(styled_df1)
 
     st.title(name)
-    st.write(styled_df, use_container_width=True)
+    st.write(styled_df_combined, use_container_width=True)
 
 def watchlist() -> None:
 
