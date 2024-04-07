@@ -9,7 +9,7 @@ from modules.functions import highlight_cells
 
 # Custom function to apply conditional formatting for specified columns
 def highlight_cells_ascending(row):
-    if row['Sales % Chg 2 Q Ago'] < row['Sales % Chg 1 Q Ago'] < row['Sales % Chg Lst Qtr']:
+    if row[0] < row[1] < row[2]:
         return ['background-color: green'] * len(row)
     else:
         return [''] * len(row)
