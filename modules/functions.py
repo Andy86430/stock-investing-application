@@ -166,3 +166,11 @@ def highlight_cells_ascending(row):
     
     else:
         return [''] * len(row)
+# Pull google sheet
+def from_google_sheet(client, name):
+    
+    # Display a Google sheet
+    wks = client.open("Database").worksheet(name)
+    df = pd.DataFrame.from_dict(wks.get_all_records())
+    df = df.set_index(df.columns[0])
+    return df

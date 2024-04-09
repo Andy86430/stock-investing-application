@@ -8,6 +8,12 @@ from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
 from modules.functions import highlight_cells_ascending
 from streamlit_app import df_breakout, df_pullback, df_coil
+from modules.functions import from_google_sheet
+from streamlit_app import client
+
+df_breakout = from_google_sheet(client, "Breakout Candidate")
+df_pullback = from_google_sheet(client, "Pullback Candidate")
+df_coil = from_google_sheet(client, "Coiled Spring Candidate")
 
 def display_csv(df):
 
