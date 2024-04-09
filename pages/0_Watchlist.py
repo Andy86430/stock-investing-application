@@ -7,6 +7,7 @@ from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
 from modules.functions import highlight_cells_ascending
+from modules.functions import dataframe_with_selections
 
 def display_csv(name):
 
@@ -22,7 +23,7 @@ def display_csv(name):
     styled_df = df.style.apply(highlight_cells, axis=0).apply(highlight_cells_ascending, subset=sales_col, axis=1).apply(highlight_cells_ascending, subset=EPS_col, axis=1)
 
     st.title(name)
-    st.write(styled_df, use_container_width=True)
+    st.write(dataframe_with_selections(styled_df), use_container_width=True)
 
 def watchlist() -> None:
 
