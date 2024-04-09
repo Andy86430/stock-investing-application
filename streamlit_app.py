@@ -8,6 +8,14 @@ from gspread_dataframe import set_with_dataframe
 import gspread
 from google.oauth2 import service_account
 
+def from_google_sheet(client, name):
+    
+    # Display a Google sheet
+    wks = client.open("Database").worksheet(name)
+    df = pd.DataFrame.from_dict(wks.get_all_records())
+    df = df.set_index(df.columns[0])
+    return df
+
 # Connect to Google sheet
 global watchlist, portfolio
 credentials = service_account.Credentials.from_service_account_info(
@@ -16,6 +24,9 @@ credentials = service_account.Credentials.from_service_account_info(
 client = gspread.authorize(credentials)
 watchlist = client.open("Database").worksheet("Watchlist")
 portfolio = client.open("Database").worksheet("Portfolio")
+df_breakout = from_google_sheet(client, "Breakout Candidate")
+df_pullback = from_google_sheet(client, "Pullback Candidate")
+df_coil = from_google_sheet(client, "Coiled Spring Candidate")
 
 def run():
     

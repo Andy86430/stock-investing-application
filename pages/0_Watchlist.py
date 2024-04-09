@@ -7,14 +7,7 @@ from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
 from modules.functions import highlight_cells_ascending
-
-def from_google_sheet(name):
-    # Display a Google sheet
-    from streamlit_app import client
-    wks = client.open("Database").worksheet(name)
-    df = pd.DataFrame.from_dict(wks.get_all_records())
-    df = df.set_index(df.columns[0])
-    return df
+from streamlit_app import df_breakout, df_pullback, df_coil
 
 def display_csv(df):
 
@@ -77,11 +70,6 @@ def watchlist() -> None:
             portfolio.clear()
             set_with_dataframe(worksheet=portfolio, dataframe=portfolio_df_updated, include_index=False, include_column_header=True, resize=True)
             st.experimental_rerun()
-
-    # Display stock features
-    df_breakout = from_google_sheet("Breakout Candidate")
-    df_pullback = from_google_sheet("Pullback Candidate")
-    df_coil = from_google_sheet("Coiled Spring Candidate")
 
     st.title("Breakout Candidate")
     display_csv(df_breakout)
