@@ -160,5 +160,9 @@ def highlight_cells(val):
 def highlight_cells_ascending(row):
     if row[0] < row[1] < row[2]:
         return ['background-color: green'] * len(row)
+    
+    elif row[0] > row[1] > row[2]:
+        return ['background-color: red'] * len(row)
+    
     else:
         return [''] * len(row)
