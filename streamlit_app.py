@@ -27,7 +27,6 @@ portfolio = client.open("Database").worksheet("Portfolio")
 df_breakout = from_google_sheet(client, "Breakout Candidate")
 df_pullback = from_google_sheet(client, "Pullback Candidate")
 df_coil = from_google_sheet(client, "Coiled Spring Candidate")
-st.write(df_breakout)
 
 def run():
     
