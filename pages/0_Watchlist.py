@@ -11,8 +11,11 @@ from modules.functions import from_google_sheet
 from streamlit_app import client
 
 df_breakout = from_google_sheet(client, "Breakout Candidate")
+df_breakout_offline = df_breakout.copy()
 df_pullback = from_google_sheet(client, "Pullback Candidate")
+df_pullback_offline = df_pullback.copy()
 df_coil = from_google_sheet(client, "Coiled Spring Candidate")
+df_coil_offline = df_coil.copy()
 
 def display_csv(df):
 
@@ -77,13 +80,13 @@ def watchlist() -> None:
             st.experimental_rerun()
 
     st.title("Breakout Candidate")
-    display_csv(df_breakout)
+    display_csv(df_breakout_offline)
 
     st.title("Pullback Candidate")
-    display_csv(df_pullback)
+    display_csv(df_pullback_offline)
 
     st.title("Coiled Spring Candidate")
-    display_csv(df_coil)
+    display_csv(df_coil_offline)
 
 # Page config
 st.set_page_config(page_title="Watchlist", page_icon="book")
