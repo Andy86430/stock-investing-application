@@ -10,6 +10,8 @@ from modules.functions import highlight_cells_ascending
 
 def display_csv(name):
 
+    st.title(name)
+
     # Display a Google sheet
     from streamlit_app import client
     wks = client.open("Database").worksheet(name)
@@ -27,7 +29,6 @@ def display_csv(name):
     EPS_col = ['EPS % Chg 2 Q Ago (-/+)','EPS % Chg 1 Q Ago (-/+)','EPS % Chg Last Qtr (-/+)']
     styled_df = selected_rows.style.apply(highlight_cells, axis=0).apply(highlight_cells_ascending, subset=sales_col, axis=1).apply(highlight_cells_ascending, subset=EPS_col, axis=1)
 
-    st.title(name)
     st.write(styled_df, use_container_width=True)
 
 def watchlist() -> None:
