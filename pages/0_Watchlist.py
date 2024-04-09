@@ -8,15 +8,15 @@ from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
 from modules.functions import highlight_cells_ascending
 
-def display_csv(name):
-
-    st.title(name)
-
+def from_google_sheet(name):
     # Display a Google sheet
     from streamlit_app import client
     wks = client.open("Database").worksheet(name)
     df = pd.DataFrame.from_dict(wks.get_all_records())
     df = df.set_index(df.columns[0])
+    return df
+
+def display_csv(df):
 
     # Add a multiselect widget to select rows based on the index
     selected_indices = st.multiselect('Select Stocks:', df.index)
@@ -79,9 +79,18 @@ def watchlist() -> None:
             st.experimental_rerun()
 
     # Display stock features
-    display_csv("Breakout Candidate")
-    display_csv("Pullback Candidate")
-    display_csv("Coiled Spring Candidate")
+    df_breakout = from_google_sheet("Breakout Candidate")
+    df_pullback = from_google_sheet("Pullback Candidate")
+    df_coil = from_google_sheet("Coiled Spring Candidate")
+
+    st.title("Breakout Candidate")
+    display_csv(df_breakout)
+
+    st.title("Pullback Candidate")
+    display_csv(df_pullback)
+
+    st.title("Coiled Spring Candidate")
+    display_csv(df_coil)
 
 # Page config
 st.set_page_config(page_title="Watchlist", page_icon="book")
