@@ -7,7 +7,6 @@ from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
 from modules.functions import highlight_cells_ascending
-from modules.functions import dataframe_with_selections
 
 def display_csv(name):
 
@@ -16,12 +15,17 @@ def display_csv(name):
     wks = client.open("Database").worksheet(name)
     df = pd.DataFrame.from_dict(wks.get_all_records())
     df = df.set_index(df.columns[0])
-    df = dataframe_with_selections(df)
+
+    # Add a multiselect widget to select rows based on the index
+    selected_indices = st.multiselect('Select Stocks:', df.index)
+
+    # Subset the dataframe with the selected indices
+    selected_rows = df.loc[selected_indices]
 
     # Apply the conditional formatting to the specified columns in DataFrame
     sales_col = ['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr']
     EPS_col = ['EPS % Chg 2 Q Ago (-/+)','EPS % Chg 1 Q Ago (-/+)','EPS % Chg Last Qtr (-/+)']
-    styled_df = df.style.apply(highlight_cells, axis=0).apply(highlight_cells_ascending, subset=sales_col, axis=1).apply(highlight_cells_ascending, subset=EPS_col, axis=1)
+    styled_df = selected_rows.style.apply(highlight_cells, axis=0).apply(highlight_cells_ascending, subset=sales_col, axis=1).apply(highlight_cells_ascending, subset=EPS_col, axis=1)
 
     st.title(name)
     st.write(styled_df, use_container_width=True)
