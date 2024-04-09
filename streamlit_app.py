@@ -17,7 +17,7 @@ def from_google_sheet(client, name):
     return df
 
 # Connect to Google sheet
-global watchlist, portfolio, df_breakout, df_pullback, df_coil
+global watchlist, portfolio
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
     scopes=["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"])

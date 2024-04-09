@@ -7,7 +7,9 @@ from modules.functions import stock_price
 from modules.functions import Zacks_Rank
 from modules.functions import highlight_cells
 from modules.functions import highlight_cells_ascending
-from streamlit_app import df_breakout, df_pullback, df_coil
+from streamlit_app import df_breakout
+from streamlit_app import df_pullback
+from streamlit_app import df_coil
 
 def display_csv(df):
 
