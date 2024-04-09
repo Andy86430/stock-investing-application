@@ -169,7 +169,7 @@ def highlight_cells_ascending(row):
 
 # Select rows
 def dataframe_with_selections(df):
-    df_with_selections = df
+    df_with_selections = df.copy()
     df_with_selections.insert(0, "Select", False)
 
     # Get dataframe row-selections from user with st.data_editor

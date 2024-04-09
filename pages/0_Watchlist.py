@@ -16,6 +16,7 @@ def display_csv(name):
     wks = client.open("Database").worksheet(name)
     df = pd.DataFrame.from_dict(wks.get_all_records())
     df = df.set_index(df.columns[0])
+    df = dataframe_with_selections(df)
 
     # Apply the conditional formatting to the specified columns in DataFrame
     sales_col = ['Sales % Chg 2 Q Ago', 'Sales % Chg 1 Q Ago', 'Sales % Chg Lst Qtr']
@@ -23,7 +24,7 @@ def display_csv(name):
     styled_df = df.style.apply(highlight_cells, axis=0).apply(highlight_cells_ascending, subset=sales_col, axis=1).apply(highlight_cells_ascending, subset=EPS_col, axis=1)
 
     st.title(name)
-    st.write(dataframe_with_selections(styled_df), use_container_width=True)
+    st.write(styled_df, use_container_width=True)
 
 def watchlist() -> None:
 
