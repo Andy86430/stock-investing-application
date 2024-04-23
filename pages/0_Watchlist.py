@@ -16,7 +16,7 @@ def watchlist() -> None:
     # Add a stock
     cols = st.columns(3)
     ticker = cols[0].text_input("Ticker:")
-    setup = cols[1].selectbox("Trading Setup:", ["Breakout", "Pullback"], index=0)
+    setup = cols[1].selectbox("Trading Setup:", ["Breakout", "Pullback", "Coiled Spring"], index=0)
     buy_point = cols[2].text_input("Buy Point:")
     if st.button(label="Submit"):
         new_row = pd.DataFrame(
