@@ -33,7 +33,7 @@ def select_table(df, jscode):
         update_mode=GridUpdateMode.SELECTION_CHANGED,
         theme="material",
         allow_unsafe_jscode=True,
-        custom_css={"#gridToolBar": {"padding-bottom": "0px !important"}}
+        height = 100
     )
 
     return pd.DataFrame(grid_table["selected_rows"])
