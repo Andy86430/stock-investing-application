@@ -34,8 +34,8 @@ def select_table(df, jscode):
         theme="material",
         allow_unsafe_jscode=True,
     )
-
-    return pd.DataFrame(grid_table["selected_rows"])
+# pd.DataFrame(grid_table["selected_rows"])
+    return grid_table
 
 # Find the PS ratio of a stock
 def get_PSratio(Symbol):
