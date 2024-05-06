@@ -39,7 +39,7 @@ def watchlist() -> None:
     # Buttons to add and delete stocks from the table
     if not df_sel_row.empty:
 
-        df_sel_row = df_sel_row.drop(columns='_selectedRowNodeInfo', axis=1)
+        # df_sel_row = df_sel_row.drop(columns='_selectedRowNodeInfo', axis=1)
 
         if st.button('Delete'):
             watchlist_df_updated = pd.concat([df_sel_row, watchlist_df]).drop_duplicates(keep=False)
