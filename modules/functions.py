@@ -95,7 +95,7 @@ def highlight_cells(val):
     elif val.name == "IBD Market Outlook":
         return ['background-color: green' if x == "Confirmed Uptrend" else 'background-color: red' for x in val]
     
-    elif val.name == "OBV" or val.name == "MACD line (not signal line)":
+    elif val.name in ["OBV","MACD line (not signal line)"]:
         return ['background-color: green' if x == "At/Near New High" else 'background-color: red' for x in val]
     
     elif val.name == '%b':
@@ -104,7 +104,7 @@ def highlight_cells(val):
     elif val.name == 'MFI (10)':
         return ['background-color: green' if x >= 80 else 'background-color: red' for x in val]
     
-    elif val.name == 'Bollinger Squeeze' or val.name == 'Leaderboard' or val.name == 'In Strong Uptrend' or val.name == 'Volatility Contraction Pattern':
+    elif val.name in ['Bollinger Squeeze', 'Leaderboard', 'In Strong Uptrend', 'Volatility Contraction Pattern']:
         return ['background-color: green' if x == "Yes" else 'background-color: red' for x in val]
     
     elif val.name == 'Stage':
@@ -113,25 +113,25 @@ def highlight_cells(val):
     elif val.name == 'Base Depth':
         return ['background-color: red' if float(x.strip('%')) > 30 else 'background-color: green' for x in val]
     
-    elif val.name == 'Breakout Vol% (Daily)' or val.name == 'Breakout Vol% (Weekly)':
+    elif val.name in ['Breakout Vol% (Daily)', 'Breakout Vol% (Weekly)']:
         return ['background-color: green' if float(x.strip('%')) >= 40 else 'background-color: red' for x in val]
     
     elif val.name == 'Handle Depth':
         return ['background-color: green' if x=='N/A' or float(x.strip('%')) <= 15 else 'background-color: red' for x in val]
     
-    elif val.name == '50-Day > 150-Day > 200-Day' or val.name == 'RS Line Within 5% of New High':
+    elif val.name in ['50-Day > 150-Day > 200-Day', 'RS Line Within 5% of New High']:
         return ['background-color: green' if x == 1 else 'background-color: red' for x in val]
     
-    elif val.name == 'EPS Rating' or val.name == 'Comp Rating':
+    elif val.name in ['EPS Rating', 'Comp Rating']:
         return ['background-color: green' if x >= 80 else 'background-color: red' for x in val]
 
     elif val.name == 'RS Rating':
         return ['background-color: green' if x >= 90 else 'background-color: red' for x in val]
 
-    elif val.name == 'SMR Rating' or val.name == 'A/D Rating' or val.name == 'Timeliness Rating':
+    elif val.name in ['SMR Rating', 'A/D Rating', 'Timeliness Rating']:
         return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C"]) else 'background-color: red' for x in val]
 
-    elif val.name == 'Ind Group RS' or val.name == 'Sponsor Rating':
+    elif val.name in ['Ind Group RS', 'Sponsor Rating']:
         return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C","D"]) else 'background-color: red' for x in val]
 
     elif val.name == 'Price to Sales':
