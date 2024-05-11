@@ -125,7 +125,7 @@ def highlight_cells(val):
     elif val.name in ['EPS Rating', 'Comp Rating']:
         return ['background-color: green' if x >= 80 else 'background-color: red' for x in val]
 
-    elif val.name == 'RS Rating':
+    elif val.name in ['RS Rating', 'RS 6-Month Rating', 'RS 3-Month Rating']:
         return ['background-color: green' if x >= 90 else 'background-color: red' for x in val]
 
     elif val.name in ['SMR Rating', 'A/D Rating', 'Timeliness Rating']:
