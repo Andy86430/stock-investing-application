@@ -107,16 +107,16 @@ def highlight_cells(val):
         return ['background-color: green' for x in val]
     
     elif val.name == 'Stage':
-        return ['background-color: green' if str(x).startswith(('1', '2')) else 'background-color: orange' if str(x).startswith(('3')) else 'background-color: red' for x in val]
+        return ['background-color: green' if str(x).startswith(('1', '2', '3')) else 'background-color: red' for x in val]
     
     elif val.name == 'Base Depth':
         return ['background-color: red' if float(x.strip('%')) > 30 else 'background-color: green' for x in val]
     
     elif val.name == 'Breakout Vol% (Daily)' or val.name == 'Breakout Vol% (Weekly)':
-        return ['background-color: green' if float(x.strip('%')) >= 40 else 'background-color: red' if float(x.strip('%')) < 0 else 'background-color: orange' for x in val]
+        return ['background-color: green' if float(x.strip('%')) >= 40 else 'background-color: red' for x in val]
     
     elif val.name == 'Handle Depth':
-        return ['background-color: orange' if x=="N/A" else 'background-color: red' if float(x.strip('%')) > 15 else 'background-color: green' for x in val]
+        return ['background-color: red' if float(x.strip('%')) > 15 else 'background-color: green' for x in val]
     
     elif val.name == '50-Day > 150-Day > 200-Day' or val.name == 'RS Line Within 5% of New High':
         return ['background-color: green' if x == 1 else 'background-color: red' for x in val]
@@ -125,7 +125,7 @@ def highlight_cells(val):
         return ['background-color: green' if x >= 80 else 'background-color: red' for x in val]
 
     elif val.name == 'RS Rating':
-        return ['background-color: green' if x >= 90 else 'background-color: red' if x < 80 else 'background-color: orange' for x in val]
+        return ['background-color: green' if x >= 90 else 'background-color: red' for x in val]
 
     elif val.name == 'SMR Rating' or val.name == 'A/D Rating' or val.name == 'Timeliness Rating':
         return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C"]) else 'background-color: red' for x in val]
@@ -134,13 +134,13 @@ def highlight_cells(val):
         return ['background-color: green' if starts_with_letter_from_list(x,["A","B","C","D"]) else 'background-color: red' for x in val]
 
     elif val.name == 'Price to Sales':
-        return ['background-color: green' if x <= 3 else 'background-color: orange' for x in val]
+        return ['background-color: green' if x <= 20 else 'background-color: red' for x in val]
 
     elif val.name == '50-Day Avg Vol (1000s)':
         return ['background-color: green' if x >= 400 else 'background-color: red' for x in val]
     
     elif val.name == 'Ind Group Rank':
-        return ['background-color: green' if x <= 40 else 'background-color: orange' for x in val]
+        return ['background-color: green' if x <= 40 else 'background-color: red' for x in val]
 
     elif val.name == "No. of Funds - Last 4 Qtrs":
         return ['background-color: red' if x in ["Decreasing", "Decreased"] else 'background-color: green' for x in val]
@@ -149,7 +149,7 @@ def highlight_cells(val):
         return ['background-color: green' if x >0 else 'background-color: red' for x in val]
 
     elif val.name == 'Signal Day Candle Formation':
-        return ['background-color: orange' if x == 'N/A' else 'background-color: green' for x in val]
+        return ['background-color: red' if x == 'N/A' else 'background-color: green' for x in val]
 
     elif val.name == '%K of the stochastics indicator (5,3,3 period)':
         return ['background-color: green' if x <= 20 else 'background-color: red' for x in val]
