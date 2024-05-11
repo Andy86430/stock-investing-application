@@ -155,6 +155,9 @@ def highlight_cells(val):
 
     elif val.name == '%K of the stochastics indicator (5,3,3 period)':
         return ['background-color: green' if x <= 20 else 'background-color: red' for x in val]
+    
+    elif val.name == 'Up/Down Vol':
+        return ['background-color: green' if x >= 1.2 else 'background-color: red' for x in val]
 
     else:
         return [''] * len(val)
