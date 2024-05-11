@@ -86,7 +86,8 @@ def starts_with_letter_from_list(string, letter_list):
 # Define conditional formatting function
 def highlight_cells(val):
 
-    if val.name in ['Type of Base','Handle Volume', 'Length (weeks)', 'Heavy volume up vs down weeks']:
+    if val.name in ['Type of Base','Handle Volume', 'Length (weeks)', 'Heavy volume up vs down weeks', 'Industry Name', 'Market Cap (mil)', 
+                    'Funds %', 'IPO Date', 'Shrt Int % of Float']:
         return ['background-color: green' for x in val]
 
     elif val.name == "Zack Rank":
