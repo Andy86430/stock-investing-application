@@ -85,7 +85,11 @@ def starts_with_letter_from_list(string, letter_list):
 
 # Define conditional formatting function
 def highlight_cells(val):
-    if val.name == "Zack Rank":
+
+    if val.name in ['Type of Base','Handle Volume']:
+        return ['background-color: green' for x in val]
+
+    elif val.name == "Zack Rank":
         return ['background-color: green' if x in ["Strong Buy", "Buy"] else 'background-color: red' for x in val]
     
     elif val.name == "IBD Market Outlook":
@@ -102,9 +106,6 @@ def highlight_cells(val):
     
     elif val.name == 'Bollinger Squeeze' or val.name == 'Leaderboard' or val.name == 'In Strong Uptrend' or val.name == 'Volatility Contraction Pattern':
         return ['background-color: green' if x == "Yes" else 'background-color: red' for x in val]
-    
-    elif val.name == 'Type of Base':
-        return ['background-color: green' for x in val]
     
     elif val.name == 'Stage':
         return ['background-color: green' if str(x).startswith(('1', '2', '3')) else 'background-color: red' for x in val]
