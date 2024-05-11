@@ -14,8 +14,8 @@ def display_csv(name):
 def documents() -> None:
 
     # Sidebar navigation
-    page_options = ["Mistakes to Avoid", "Investment Commandments", "Market Timing", "Stock Confirmed Uptrend", 
-                    "Profit Taking", "Find The Best IPO Stocks", "How To Hedge An Overextended Stock",
+    page_options = ["Mistakes to Avoid", "Investment Commandments", "Big Picture", 
+                    "Profit Taking", "Trading IPO Stocks", "How To Hedge An Overextended Stock",
                     "Breakout Strategy", "Pullback Strategy", "Bullish Mean Reversion Strategy", "Bullish Divergence Strategy", 
                     "Coiled Spring Strategy"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
@@ -26,11 +26,8 @@ def documents() -> None:
     elif selected_page == "Investment Commandments":
         display_csv("Investment Commandments")
 
-    elif selected_page == "Market Timing":
-        display_csv("Market Timing")
-
-    elif selected_page == "Stock Confirmed Uptrend":
-        display_csv("Stock Confirmed Uptrend")
+    elif selected_page == "Big Picture":
+        display_csv("Big Picture")
 
     elif selected_page == "Breakout Strategy":
         display_csv("Breakout Strategy")
@@ -38,8 +35,8 @@ def documents() -> None:
     elif selected_page == "Pullback Strategy":
         display_csv("Pullback Strategy")
 
-    elif selected_page == "Find The Best IPO Stocks":
-        display_csv("Find The Best IPO Stocks")
+    elif selected_page == "Trading IPO Stocks":
+        display_csv("Trading IPO Stocks")
 
     elif selected_page == "Profit Taking":
         display_csv("Profit Taking")
