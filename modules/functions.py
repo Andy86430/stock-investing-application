@@ -86,7 +86,7 @@ def starts_with_letter_from_list(string, letter_list):
 # Define conditional formatting function
 def highlight_cells(val):
 
-    if val.name in ['Type of Base','Handle Volume']:
+    if val.name in ['Type of Base','Handle Volume', 'Length (weeks)', 'Heavy volume up vs down weeks']:
         return ['background-color: green' for x in val]
 
     elif val.name == "Zack Rank":
@@ -163,11 +163,9 @@ def highlight_cells_ascending(row):
     if row[0] < row[1] < row[2]:
         return ['background-color: green'] * len(row)
     
-    elif row[0] > row[1] > row[2]:
-        return ['background-color: red'] * len(row)
-    
     else:
-        return [''] * len(row)
+        return ['background-color: red'] * len(row)
+
 # Pull google sheet
 def from_google_sheet(client, name):
     
