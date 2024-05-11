@@ -95,16 +95,16 @@ def highlight_cells(val):
         return ['background-color: green' if x == "At/Near New High" else 'background-color: red' for x in val]
     
     elif val.name == '%b':
-        return ['background-color: green' if x >= 0.8 else 'background-color: orange' for x in val]
+        return ['background-color: green' if x >= 0.8 else 'background-color: red' for x in val]
     
     elif val.name == 'MFI (10)':
-        return ['background-color: green' if x >= 80 else 'background-color: orange' for x in val]
+        return ['background-color: green' if x >= 80 else 'background-color: red' for x in val]
     
     elif val.name == 'Bollinger Squeeze' or val.name == 'Leaderboard' or val.name == 'In Strong Uptrend' or val.name == 'Volatility Contraction Pattern':
-        return ['background-color: green' if x == "Yes" else 'background-color: orange' for x in val]
+        return ['background-color: green' if x == "Yes" else 'background-color: red' for x in val]
     
     elif val.name == 'Type of Base':
-        return ['background-color: green' if x == "Cup with Handle" else 'background-color: orange' for x in val]
+        return ['background-color: green' for x in val]
     
     elif val.name == 'Stage':
         return ['background-color: green' if str(x).startswith(('1', '2')) else 'background-color: orange' if str(x).startswith(('3')) else 'background-color: red' for x in val]
