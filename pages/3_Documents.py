@@ -16,8 +16,7 @@ def documents() -> None:
     # Sidebar navigation
     page_options = ["Mistakes to Avoid", "Investment Commandments", "Big Picture", 
                     "Profit Taking", "Trading IPO Stocks",
-                    "Breakout Strategy", "Pullback Strategy", "Bullish Mean Reversion Strategy", "Bullish Divergence Strategy", 
-                    "Coiled Spring Strategy"]
+                    "Breakout Strategy", "Pullback Strategy", "Coiled Spring Strategy"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
     if selected_page == "Mistakes to Avoid":
