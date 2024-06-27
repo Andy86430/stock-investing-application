@@ -1,10 +1,5 @@
 import streamlit as st
 import pandas as pd
-
-import warnings
-warnings.filterwarnings("ignore", message="numpy.dtype size changed")
-warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
-
 from gspread_dataframe import set_with_dataframe
 from modules.functions import select_table
 from modules.config import jscode_buy_range
