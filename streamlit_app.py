@@ -27,7 +27,7 @@ def run():
 
     # Produce a bullish watchlist
     st.markdown("""### Actions:""")
-    upload = st.file_uploader('Upload Stock List (xlsx)', type="xlsx")
+    upload = st.file_uploader('Upload Stock List (xlsx)', type="csv")
     if upload is not None:
         if st.button('Produce Bullish List'):    
             bullishlist = pd.read_csv(upload).dropna()
