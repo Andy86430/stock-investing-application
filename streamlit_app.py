@@ -30,7 +30,7 @@ def run():
     upload = st.file_uploader('Upload Stock List (xlsx)', type="xlsx")
     if upload is not None:
         if st.button('Produce Bullish List'):    
-            bullishlist = pd.read_excel(upload) # .dropna()
+            bullishlist = pd.read_excel(upload).dropna()
             bullishlist['Zack Rank'] = bullishlist['Symbol'].apply(lambda x: Zacks_Rank(x))
             bullishlist = bullishlist.loc[(bullishlist['Zack Rank'].isin(['Buy', 'Strong Buy']))]
             bullishlist['PS'] = bullishlist['Symbol'].apply(lambda x: get_PSratio(x))
