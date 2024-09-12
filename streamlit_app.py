@@ -41,24 +41,13 @@ def run():
     # Refresh stock prices
     if st.button('Refresh'):
 
-        global watchlist, portfolio
+        global watchlist
 
         # Refresh watchlist
         watchlist_df = pd.DataFrame.from_dict(watchlist.get_all_records())
-        watchlist_df['Price'] = watchlist_df['Ticker'].apply(lambda x: stock_price(x)).round(2)
-        watchlist_df['Buying Distance (%)'] = (100 * (watchlist_df['Price'] / watchlist_df['Buy Point'] - 1)).round(1)
         watchlist_df['Zacks Rank'] = watchlist_df['Ticker'].apply(lambda x: Zacks_Rank(x))
         watchlist.clear()
         set_with_dataframe(worksheet=watchlist, dataframe=watchlist_df, include_index=False, include_column_header=True)
-
-        # Refresh portfolio
-        portfolio_df = pd.DataFrame.from_dict(portfolio.get_all_records())
-        portfolio_df['Price'] = portfolio_df['Ticker'].apply(lambda x: stock_price(x)).round(2)
-        portfolio_df['Buying Distance (%)'] = (100 * (portfolio_df['Price'] / portfolio_df['Buy Point'] - 1)).round(1)
-        portfolio_df['Zacks Rank'] = portfolio_df['Ticker'].apply(lambda x: Zacks_Rank(x))
-        portfolio.clear()
-        set_with_dataframe(worksheet=portfolio, dataframe=portfolio_df, include_index=False, include_column_header=True)
-        st.success('Refreshed!', icon="✅")
 
     # Useful links
     st.markdown(
