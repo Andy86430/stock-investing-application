@@ -9,20 +9,15 @@ from modules.functions import Zacks_Rank
 def watchlist() -> None:
 
     # Connect to Google sheet
-    from streamlit_app import watchlist, portfolio
+    from streamlit_app import watchlist
     watchlist_df = pd.DataFrame.from_dict(watchlist.get_all_records())
-    portfolio_df = pd.DataFrame.from_dict(portfolio.get_all_records())
 
     # Add a stock
     cols = st.columns(3)
     ticker = cols[0].text_input("Ticker:")
-    setup = cols[1].selectbox("Trading Setup:", ["Breakout", "Pullback", "Coiled Spring"], index=0)
-    buy_point = cols[2].text_input("Buy Point:")
     if st.button(label="Submit"):
         new_row = pd.DataFrame(
-            {'Ticker': [ticker], 'Trading Setup': [setup], 'Buy Point': [buy_point], 'Price': [round(stock_price(ticker), 2)],
-             'Zacks Rank': [Zacks_Rank(ticker)]})
-        new_row['Buying Distance (%)'] = (100 * (new_row['Price'] / new_row['Buy Point'].astype(float) - 1)).round(1)
+            {'Ticker': [ticker],'Zacks Rank': [Zacks_Rank(ticker)]})
         watchlist_df_updated = watchlist_df.append(new_row, ignore_index=True)
         watchlist.clear()
         set_with_dataframe(worksheet=watchlist, dataframe=watchlist_df_updated, include_index=False, include_column_header=True)
@@ -45,12 +40,6 @@ def watchlist() -> None:
             watchlist_df_updated = pd.concat([df_sel_row, watchlist_df]).drop_duplicates(keep=False)
             watchlist.clear()
             set_with_dataframe(worksheet=watchlist, dataframe=watchlist_df_updated, include_index=False, include_column_header=True)
-            st.experimental_rerun()
-
-        if st.button('Add to portfolio'):
-            portfolio_df_updated = pd.concat([df_sel_row, portfolio_df])
-            portfolio.clear()
-            set_with_dataframe(worksheet=portfolio, dataframe=portfolio_df_updated, include_index=False, include_column_header=True, resize=True)
             st.experimental_rerun()
 
 # Page config
