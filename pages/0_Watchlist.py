@@ -24,7 +24,7 @@ def watchlist() -> None:
         st.experimental_rerun()
 
     # Interactive table
-    df_sel_row = select_table(watchlist_df, jscode_buy_range)
+    df_sel_row = select_table(watchlist_df.sort_values('Zacks Rank'), jscode_buy_range)
 
     # Display the number of stocks
     message = "Number of stocks:"
