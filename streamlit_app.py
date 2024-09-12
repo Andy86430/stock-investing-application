@@ -9,13 +9,12 @@ import gspread
 from google.oauth2 import service_account
 
 # Connect to Google sheet
-global watchlist, portfolio
+global watchlist
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"],
     scopes=["https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"])
 client = gspread.authorize(credentials)
 watchlist = client.open("Database").worksheet("Watchlist")
-portfolio = client.open("Database").worksheet("Portfolio")
 
 def run():
     
