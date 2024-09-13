@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
-from modules.functions import get_PSratio
 from modules.functions import convert_df
 from modules.functions import Zacks_Rank
-from modules.functions import stock_price
 from gspread_dataframe import set_with_dataframe
 import gspread
 from google.oauth2 import service_account
@@ -32,8 +30,6 @@ def run():
             bullishlist = pd.read_csv(upload).dropna()
             bullishlist['Zack Rank'] = bullishlist['Symbol'].apply(lambda x: Zacks_Rank(x))
             bullishlist = bullishlist.loc[(bullishlist['Zack Rank'].isin(['Buy', 'Strong Buy']))]
-            bullishlist['PS'] = bullishlist['Symbol'].apply(lambda x: get_PSratio(x))
-            bullishlist = bullishlist.sort_values(by=['PS'])
             csv = convert_df(bullishlist['Symbol'])
             st.download_button("Download",csv,upload.name.replace(".csv"," Filtered")+".csv","text/csv",key='download-csv')
 
