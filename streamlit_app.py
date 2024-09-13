@@ -47,6 +47,7 @@ def run():
         watchlist_df['Zacks Rank'] = watchlist_df['Ticker'].apply(lambda x: Zacks_Rank(x))
         watchlist.clear()
         set_with_dataframe(worksheet=watchlist, dataframe=watchlist_df, include_index=False, include_column_header=True)
+        st.success("Successful!")
 
     # Useful links
     st.markdown(
