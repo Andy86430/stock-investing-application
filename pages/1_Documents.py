@@ -16,7 +16,7 @@ def documents() -> None:
     # Sidebar navigation
     page_options = ["Mistakes to Avoid", "Investment Commandments", "Big Picture", 
                     "Profit Taking", "Trading IPO Stocks",
-                    "Breakout Strategy", "Pullback Strategy", "Coiled Spring Strategy"]
+                    "Breakout Strategy", "Pullback Strategy", "Coiled Spring Strategy", "Bullish Mean Reversion Strategy"]
     selected_page = st.sidebar.selectbox("Documents", page_options)
 
     if selected_page == "Mistakes to Avoid":
@@ -42,9 +42,6 @@ def documents() -> None:
 
     elif selected_page == "Bullish Mean Reversion Strategy":
         display_csv("Bullish Mean Reversion Strategy")
-
-    elif selected_page == "Bullish Divergence Strategy":
-        display_csv("Bullish Divergence Strategy")
 
     elif selected_page == "Coiled Spring Strategy":
         display_csv("Coiled Spring Strategy")
